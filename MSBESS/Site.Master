@@ -484,6 +484,19 @@
                                 <%--<li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i>Staff Movement</a></li>--%>
                             </ul>
                         </li>
+                        
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file"></i>
+                                <span>Employee Documents</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="EmpFileUpload.aspx"><i class="fa fa-file-o"></i>Document Management</a></li>
+                            </ul>
+                        </li>
                         <%-- <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-edit"></i><span>Performance Appraisal</span>

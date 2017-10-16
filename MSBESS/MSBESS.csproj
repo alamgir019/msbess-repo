@@ -469,6 +469,7 @@
     <Content Include="Pages\AwayFromDesk.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
     <Content Include="Pages\EmpBloodGroupSearch.aspx" />
+    <Content Include="Pages\EmpFileUpload.aspx" />
     <Content Include="Pages\LeavePendingList.aspx" />
     <Content Include="Pages\LeaveStatement.aspx" />
     <Content Include="Pages\MonthlyAttendance.aspx" />
@@ -642,6 +643,13 @@
     </Compile>
     <Compile Include="Pages\EmpBloodGroupSearch.aspx.designer.cs">
       <DependentUpon>EmpBloodGroupSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmpFileUpload.aspx.cs">
+      <DependentUpon>EmpFileUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EmpFileUpload.aspx.designer.cs">
+      <DependentUpon>EmpFileUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeavePendingList.aspx.cs">
       <DependentUpon>LeavePendingList.aspx</DependentUpon>
