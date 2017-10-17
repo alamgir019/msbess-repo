@@ -7,86 +7,85 @@
             </div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li role="presentation" class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">
+                <li role="presentation"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">
                     <h4>Upload File</h4>
                 </a></li>
-                <li role="presentation"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">
+                <li role="presentation" class="active" ><a href="#view" aria-controls="view" role="tab" data-toggle="tab">
                     <h4>View File</h4>
                 </a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="upload">
+                <div role="tabpanel" class="tab-pane fade" id="upload">
                     <div class="form-horizontal">
                         <asp:HiddenField ID="hfID" runat="server" />
                         <div class="box-body">
                             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
-            <ContentTemplate>
-                            <div class="row">                                
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="fluTin" class="col-sm-4 control-label">TIN Certificate</label>
-                                        <div class="col-sm-8">
-                                            <asp:FileUpload ID="fluTin" class="form-control" Height="100%" runat="server" /> 
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fluTin"
-                                                    ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <ContentTemplate>
+                                    <div class="row">                                
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="fluTin" class="col-sm-4 control-label">TIN Certificate</label>
+                                                <div class="col-sm-8">
+                                                    <asp:FileUpload ID="fluTin" class="form-control" Height="100%" runat="server" /> 
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fluTin"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="fluNid" class="col-sm-4 control-label">National ID</label>
-                                        <div class="col-sm-8">
-                                            <asp:FileUpload ID="fluNid" class="form-control" Height="100%" runat="server" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="fluNid"
-                                                    ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="fluNid" class="col-sm-4 control-label">National ID</label>
+                                                <div class="col-sm-8">
+                                                    <asp:FileUpload ID="fluNid" class="form-control" Height="100%" runat="server" />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="fluNid"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="fluDriveLic" class="col-sm-4 control-label">Driving License</label>
-                                        <div class="col-sm-8">
-                                            <asp:FileUpload ID="fluDriveLic" runat="server" class="form-control" Height="100%" /> 
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="fluDriveLic"
-                                                    ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="fluDriveLic" class="col-sm-4 control-label">Driving License</label>
+                                                <div class="col-sm-8">
+                                                    <asp:FileUpload ID="fluDriveLic" runat="server" class="form-control" Height="100%" /> 
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="fluDriveLic"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">                                
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="fluBmdc" class="col-sm-4 control-label">BMDC Certificate</label>
-                                        <div class="col-sm-8">
-                                            <asp:FileUpload ID="fluBmdc" runat="server" class="form-control" Height="100%" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="fluBmdc"
-                                                    ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    <div class="row">                                
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="fluBmdc" class="col-sm-4 control-label">BMDC Certificate</label>
+                                                <div class="col-sm-8">
+                                                    <asp:FileUpload ID="fluBmdc" runat="server" class="form-control" Height="100%" />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="fluBmdc"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                    <!-- /.body footer -->
-                    <div class="box-footer">
-                        <div class="col-md-offset-2">
-                            <asp:Button ID="btnRefresh" runat="server" Text="Refresh" class="btn btn-success col-md-3 btn-custom" CausesValidation="false" OnClick="btnRefresh_Click" />
-                            <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-primary col-md-3 btn-custom" OnClick="btnUpload_Click" />
-                            <asp:Button ID="btnClose" runat="server" Text="Close" class="btn btn-warning col-md-3 btn-custom" CausesValidation="false" OnClick="btnClose_Click" />
-                        </div>
-                    </div>    
-            </ContentTemplate>  
-            <Triggers>
-                <asp:PostBackTrigger ControlID="btnUpload" />
-            </Triggers>   
+                                    <div class="box-footer">
+                                            <div class="col-md-offset-2">
+                                                <asp:Button ID="btnRefresh" runat="server" Text="Refresh" class="btn btn-success col-md-3 btn-custom" CausesValidation="false" OnClick="btnRefresh_Click" />
+                                                <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-primary col-md-3 btn-custom" OnClick="btnUpload_Click" />
+                                                <asp:Button ID="btnClose" runat="server" Text="Close" class="btn btn-warning col-md-3 btn-custom" CausesValidation="false" OnClick="btnClose_Click" />
+                                            </div>
+                                        </div>    
+                                </ContentTemplate>  
+                                <Triggers>
+                                    <asp:PostBackTrigger ControlID="btnUpload" />
+                                </Triggers>   
                             </asp:UpdatePanel>           
+                        </div>
+                    </div>
                 </div>
-</div>
-                </div>
-                        <div role="tabpanel" class="tab-pane fade" id="view">
+                <div role="tabpanel" class="tab-pane fade in active" id="view">
                     <div class="form-horizontal custom-form">
                         <div class="box-body">
                             <!-- /.box-header -->

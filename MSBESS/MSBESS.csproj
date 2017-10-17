@@ -470,6 +470,7 @@
     <Content Include="Pages\ChangePassword.aspx" />
     <Content Include="Pages\EmpBloodGroupSearch.aspx" />
     <Content Include="Pages\EmpFileUpload.aspx" />
+    <Content Include="Pages\EmpFileViewer.aspx" />
     <Content Include="Pages\LeavePendingList.aspx" />
     <Content Include="Pages\LeaveStatement.aspx" />
     <Content Include="Pages\MonthlyAttendance.aspx" />
@@ -651,6 +652,13 @@
     </Compile>
     <Compile Include="Pages\EmpFileUpload.aspx.designer.cs">
       <DependentUpon>EmpFileUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmpFileViewer.aspx.cs">
+      <DependentUpon>EmpFileViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EmpFileViewer.aspx.designer.cs">
+      <DependentUpon>EmpFileViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeavePendingList.aspx.cs">
       <DependentUpon>LeavePendingList.aspx</DependentUpon>
