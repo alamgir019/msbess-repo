@@ -1,16 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EmpFileUpload.aspx.cs" Inherits="WebAdmin.Pages.EmpFileUpload" %>
+﻿<%@ Page  Title="File Management" Async="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EmpFileUpload.aspx.cs" Inherits="WebAdmin.Pages.EmpFileUpload" %>
+<%@ Register Src="~/UserControls/EIS/ctlEmpFileUpload.ascx" TagPrefix="uc1" TagName="ctlEmpFileUpload" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    here is fist change
-    </div>
-    </form>
-</body>
-</html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <uc1:ctlEmpFileUpload runat="server" id="ctlEmpFileUpload" />
+</asp:Content>

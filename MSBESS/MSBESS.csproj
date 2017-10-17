@@ -478,6 +478,7 @@
     <Content Include="UserControls\Attendance\ctlMonthlyAttendance.ascx" />
     <Content Include="UserControls\EIS\ctlChangePassword.ascx" />
     <Content Include="UserControls\EIS\ctlEmpBloodGroupSearch.ascx" />
+    <Content Include="UserControls\EIS\ctlEmpFileUpload.ascx" />
     <Content Include="UserControls\Leave\ctlLeaveStatement.ascx" />
     <Content Include="UserControls\Leave\ctlPendingLeaveList.ascx" />
     <Content Include="UserControls\Payroll\ctlTaxCalculation.ascx" />
@@ -706,6 +707,13 @@
     </Compile>
     <Compile Include="UserControls\EIS\ctlEmpBloodGroupSearch.ascx.designer.cs">
       <DependentUpon>ctlEmpBloodGroupSearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EIS\ctlEmpFileUpload.ascx.cs">
+      <DependentUpon>ctlEmpFileUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\EIS\ctlEmpFileUpload.ascx.designer.cs">
+      <DependentUpon>ctlEmpFileUpload.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Leave\ctlLeaveStatement.ascx.cs">
       <DependentUpon>ctlLeaveStatement.ascx</DependentUpon>
