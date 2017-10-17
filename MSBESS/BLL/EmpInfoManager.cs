@@ -112,7 +112,6 @@ namespace WebAdmin.BLL
             DataTable sortedDT = dv.ToTable();
             return sortedDT;
         }
-
         public void GetChildEmployee(DataTable dtEMp, DataRow row,DataTable dtEmpList)
         {
             DataRow[] cRows;
@@ -128,10 +127,30 @@ namespace WebAdmin.BLL
             }
             return;
         }
+        public DataTable SelectFiscalYear(Int32 FiscalYrId, string strType)
+        {
+            string sql = "";
+
+            if (strType == "F")
+                sql = "SELECT * FROM FiscalYearList WHERE IsCurrFiscalYr='Y' AND IsFYTax='N' AND  IsFYPF='N' AND IsFYMed='N' ";
+            else if (strType == "T")
+                sql = "SELECT * FROM FiscalYearList WHERE IsFYTax='Y' ORDER BY FiscalYrId DESC";
+            else if (strType == "P")
+                sql = "SELECT * FROM FiscalYearList WHERE IsFYPF='Y' ORDER BY FiscalYrId DESC";
+            else if (strType == "M")
+                sql = "SELECT * FROM FiscalYearList WHERE IsFYMed='Y' ORDER BY FiscalYrId DESC";
+            else if (strType == "FA")
+                sql = "SELECT * FROM FiscalYearList WHERE IsFYTax='N' AND  IsFYPF='N' AND IsFYMed='N' ORDER BY IsCurrFiscalYr DESC,FiscalYrId DESC";
+            else if (strType == "LPF")
+                sql = "SELECT top 1 FiscalYrId,FiscalYrTitle FROM FiscalYearList WHERE IsFYPF='Y' ORDER BY FiscalYrId DESC";
+
+            DataTable dtFiscalyear = objDAL.CreateDT(sql, "dtFiscalYearList");
+            
+            return dtFiscalyear;
+        }
 
 
 
-       
         #endregion
 
         public DataTable SelectEmpInfoHRAction(string EmpID)

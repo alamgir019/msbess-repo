@@ -432,22 +432,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="MonthlyPayslip.aspx"><i class="fa fa-circle-o"></i>Monthly Payslip</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>PF Information</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tax Card</a></li>
-                                <%-- <li>
-                                    <a href="#">
-                                        <i class="fa fa-th"></i><span>Tax Card</span>
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i>Tax Asessment</a></li>
-                                        <li><a href="TaxCalculation.aspx"><i class="fa fa-circle-o"></i>Tax Calculation</a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i>Tax Certificate</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Advance Taken</a></li>--%>
-                                <%--<li><a href="#"><i class="fa fa-circle-o"></i>Relative Information</a></li>--%>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Tax Card</a></li>                               
                             </ul>
                         </li>
                         <li class="treeview">
@@ -497,32 +482,18 @@
                                 <li><a href="EmpFileUpload.aspx"><i class="fa fa-file-o"></i>Document Management</a></li>
                             </ul>
                         </li>
-                        <%-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-edit"></i><span>Performance Appraisal</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>360-Degree Reports</a></li>
-                                <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>Yearly Appraisal Report</a></li>
-                                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Appraisal Form A/KPI</a></li>
-                                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Confirmation Appraisal Form</a></li>
-                            </ul>
-                        </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-book"></i><span>Training</span>
+                                <i class="fa fa-file-text"></i>
+                                <span>Reports</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i>Previous Training</a></li>
-                                <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i>MSB Training</a></li>
+                                <li><a href="ReportViewer.aspx"><i class="fa fa-file-text-o"></i>View Reporst</a></li>
                             </ul>
-                        </li>--%>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
