@@ -88,5 +88,43 @@ namespace WebAdmin.BLL
             return objDAL.ds.Tables["tblMonthlyAttnd"];
         }
         #endregion
+
+        #region Payroll
+
+        public DataTable Get_PayslipMonthlyAll(string FisYear, string VMonth, string VYear, string EmpID, string sDesig, string SalSubLocId)
+        {
+            SqlCommand cmd = new SqlCommand("Proc_Payroll_Select_PayslipMonthlyAll");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter p_Year = cmd.Parameters.Add("FisYear", SqlDbType.BigInt);
+            p_Year.Direction = ParameterDirection.Input;
+            p_Year.Value = Convert.ToInt32(FisYear);
+
+            SqlParameter p_VMonth = cmd.Parameters.Add("VMonth", SqlDbType.BigInt);
+            p_VMonth.Direction = ParameterDirection.Input;
+            p_VMonth.Value = Convert.ToInt32(VMonth);
+
+            SqlParameter p_VYear = cmd.Parameters.Add("VYear", SqlDbType.BigInt);
+            p_VYear.Direction = ParameterDirection.Input;
+            p_VYear.Value = Convert.ToInt32(VYear);
+
+            SqlParameter p_EmpID = cmd.Parameters.Add("EmpID", SqlDbType.Char);
+            p_EmpID.Direction = ParameterDirection.Input;
+            p_EmpID.Value = EmpID;
+
+            SqlParameter p_SalSourceID = cmd.Parameters.Add("DesigId", SqlDbType.BigInt);
+            p_SalSourceID.Direction = ParameterDirection.Input;
+            p_SalSourceID.Value = Convert.ToInt32(sDesig);
+
+
+            SqlParameter p_SalDiv = cmd.Parameters.Add("ClinicId", SqlDbType.Char);
+            p_SalDiv.Direction = ParameterDirection.Input;
+            p_SalDiv.Value = SalSubLocId;
+
+
+            objDAL.CreateDSFromProc(cmd, "dtSalarySSourandEmpWise");
+            return objDAL.ds.Tables["dtSalarySSourandEmpWise"];
+        }
+        #endregion
     }
 }

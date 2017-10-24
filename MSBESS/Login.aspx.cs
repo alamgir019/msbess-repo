@@ -69,6 +69,7 @@ namespace WebAdmin
                             Session["EMPLOYEEID"] = row["EmpId"].ToString().Trim();
                             Session["ISADMIN"] = row["IsAdmin"].ToString().Trim();
                             Session["DESIGNATION"] = row["JobTitleName"].ToString().Trim();
+                            Session["DESIGID"] = row["JobTitleId"].ToString().Trim();
                             Session["LOCATION"] = "Dhaka";
                             Session["JOINDATE"] = Common.DisplayDateTime(row["JoiningDate"].ToString().Trim(),false,Constant.strDateFormat);
                             Session["FISCALYRID"] = strFiscalYear;

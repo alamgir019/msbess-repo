@@ -491,7 +491,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="ReportViewer.aspx"><i class="fa fa-file-text-o"></i>View Reporst</a></li>
+                                <li><a href="../CrystalReports/ReportViewer.aspx"><i class="fa fa-file-text-o"></i>View Reporst</a></li>
                             </ul>
                         </li>
                     </ul>

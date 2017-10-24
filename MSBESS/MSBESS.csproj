@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,6 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
@@ -50,6 +53,7 @@
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -88,12 +92,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -120,6 +122,7 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -466,6 +469,7 @@
     <Content Include="Content\plugins\sparkline\jquery.sparkline.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\images\MSB-Logo.jpg" />
+    <Content Include="CrystalReports\PayrollReportViewer.aspx" />
     <Content Include="Pages\AwayFromDesk.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
     <Content Include="Pages\EmpBloodGroupSearch.aspx" />
@@ -506,7 +510,7 @@
     <Content Include="Pages\Nominee.aspx" />
     <Content Include="Pages\PhotoUpload.aspx" />
     <Content Include="Pages\RegrettedLeaveList.aspx" />
-    <Content Include="Pages\ReportViewer.aspx" />
+    <Content Include="CrystalReports\ReportViewer.aspx" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -584,6 +588,17 @@
     </Content>
     <Content Include="Content\plugins\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Empty.Master" />
+    <Content Include="App_Data\dsReports.xsc">
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Data\dsReports.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReports.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Data\dsReports.xss">
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Site.Mobile.Master" />
     <None Include="Properties\PublishProfiles\msbess.pubxml" />
@@ -624,7 +639,31 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReports\CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\PayrollReportViewer.aspx.cs">
+      <DependentUpon>PayrollReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\PayrollReportViewer.aspx.designer.cs">
+      <DependentUpon>PayrollReportViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReports\rptSalPaySlipAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSalPaySlipAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\UserCreation.cs" />
+    <Compile Include="App_Data\dsReports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AwayFromDesk.aspx.cs">
       <DependentUpon>AwayFromDesk.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -879,11 +918,11 @@
     <Compile Include="Pages\RegrettedLeaveList.aspx.designer.cs">
       <DependentUpon>RegrettedLeaveList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ReportViewer.aspx.cs">
+    <Compile Include="CrystalReports\ReportViewer.aspx.cs">
       <DependentUpon>ReportViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\ReportViewer.aspx.designer.cs">
+    <Compile Include="CrystalReports\ReportViewer.aspx.designer.cs">
       <DependentUpon>ReportViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -996,7 +1035,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CrystalReports\Attendance\" />
+    <Folder Include="crystalreportviewers13\" />
     <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReports\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\rptSalPaySlipAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSalPaySlipAll.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

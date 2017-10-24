@@ -157,13 +157,13 @@ namespace WebAdmin.UserControls.Report {
         protected global::System.Web.UI.WebControls.Label Label16;
         
         /// <summary>
-        /// ddlDesig control.
+        /// txtDesig control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDesig;
+        protected global::System.Web.UI.WebControls.TextBox txtDesig;
         
         /// <summary>
         /// PEmpId control.

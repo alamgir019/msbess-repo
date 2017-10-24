@@ -9,33 +9,33 @@
                 <ContentTemplate>
                     <asp:Panel ID="PBranch" runat="server" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="1px" >
                         <asp:Label ID="Label26" runat="server" Text="Cost Center :" CssClass="textlevel"></asp:Label>
-                        <asp:DropDownList ID="ddlDivision" runat="server" AutoPostBack="True" CssClass="textlevelleft">
+                        <asp:DropDownList ID="ddlDivision" runat="server" AutoPostBack="false" CssClass="textlevelleft">
                             <asp:ListItem Value="-1" Text="All"></asp:ListItem>
                         </asp:DropDownList>
                     </asp:Panel>
                     <asp:Panel ID="PFisY" runat="server" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="1px" Visible="False">
                         <asp:Label ID="Label2" runat="server" Text="Fiscal Year :" CssClass="textlevel"></asp:Label>
-                        <asp:DropDownList ID="ddlFisYear" runat="server" CssClass="textlevelleft"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlFisYear" AutoPostBack="false" runat="server" CssClass="textlevelleft"></asp:DropDownList>
                     </asp:Panel>
                     <asp:Panel ID="PMonthFrom" runat="server" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="1px" Visible="False">
                         <asp:Label ID="Label3" runat="server" Text="Month :" CssClass="textlevel"></asp:Label>
-                        <asp:DropDownList ID="ddlMonthFrm" runat="server" CssClass="textlevelleft"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlMonthFrm" AutoPostBack="false" runat="server" CssClass="textlevelleft"></asp:DropDownList>
                     </asp:Panel>
                     <asp:Panel ID="PYear" runat="server" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="1px" Visible="False">
                         <asp:Label ID="Label10" runat="server" Text="Year :" CssClass="textlevel"></asp:Label>
-                        <asp:DropDownList ID="ddlYear" runat="server" CssClass="textlevelleft"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlYear" AutoPostBack="false" runat="server" CssClass="textlevelleft"></asp:DropDownList>
                     </asp:Panel>
                     <asp:Panel ID="PDesig" runat="server" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="1px" Visible="False">
                         <asp:Label ID="Label16" runat="server" Text="Designation :" CssClass="textlevel"></asp:Label>                                                            
-                        <asp:DropDownList ID="ddlDesig" runat="server" CssClass="textlevelleft"></asp:DropDownList>
+                        <asp:TextBox ID="txtDesig" runat="server" CssClass="textlevelleft" ReadOnly="true"></asp:TextBox>
                     </asp:Panel>
                     <asp:Panel ID="PEmpId" runat="server" BorderColor="DarkGray" BorderStyle="Solid" BorderWidth="1px" Visible="False">
                         <asp:Label ID="Label6" runat="server" CssClass="textlevel" Text="Emp Id :"></asp:Label>                                                            
-                        <asp:TextBox ID="txtEmpCode" runat="server"></asp:TextBox>                                                           
+                        <asp:TextBox ID="txtEmpCode" runat="server" ReadOnly="true"></asp:TextBox>                                                           
                     </asp:Panel>                            
                     <div style="padding-right: 15px; float: left;">
                         <asp:Panel ID="PShow" runat="server" Visible="False">
-                            <asp:Button ID="btnShow" runat="server" Text="Show Report" Font-Underline="False"></asp:Button>
+                            <asp:Button ID="btnShow" runat="server" Text="Show Report" OnClick="btnShow_Click" Font-Underline="False"></asp:Button>
                         </asp:Panel>
                     </div>
                     <table style="width: 340px;">
