@@ -5,7 +5,6 @@
   <!-- Horizontal Form -->
     <form id="form1" runat="server">
     <div class="box box-primary">
-
         <fieldset style="text-align: left; background-color: White">
             <CR:CrystalReportViewer ID="CRVT" runat="server" EnableDatabaseLogonPrompt="False"
                 OnBeforeRender="CRVT_BeforeRender" OnUnload="CRVT_Unload" PrintMode="ActiveX"

@@ -419,6 +419,7 @@
                                 <li><a href="FamilyInformation.aspx"><i class="fa fa-circle-o"></i>Family Information</a></li>
                                 <li><a href="Nominee.aspx"><i class="fa fa-circle-o"></i>Nominee Information</a></li>
                                 <li><a href="EmpBloodGroupSearch.aspx"><i class="fa fa-circle-o"></i>Blood Group Information</a></li>
+                                <li><a href="EmpPresentStatus.aspx"><i class="fa fa-circle-o"></i>HO Presence Status</a></li>
                                 <%-- <li><a href="#"><i class="fa fa-circle-o"></i>Relative Information</a></li>--%>
                             </ul>
                         </li>

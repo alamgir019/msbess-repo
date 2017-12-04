@@ -475,6 +475,7 @@
     <Content Include="Pages\EmpBloodGroupSearch.aspx" />
     <Content Include="Pages\EmpFileUpload.aspx" />
     <Content Include="Pages\EmpFileViewer.aspx" />
+    <Content Include="Pages\EmpPresentStatus.aspx" />
     <Content Include="Pages\LeavePendingList.aspx" />
     <Content Include="Pages\LeaveStatement.aspx" />
     <Content Include="Pages\MonthlyAttendance.aspx" />
@@ -484,6 +485,7 @@
     <Content Include="UserControls\EIS\ctlChangePassword.ascx" />
     <Content Include="UserControls\EIS\ctlEmpBloodGroupSearch.ascx" />
     <Content Include="UserControls\EIS\ctlEmpFileUpload.ascx" />
+    <Content Include="UserControls\EIS\ctlEmpPresentStatus.ascx" />
     <Content Include="UserControls\Leave\ctlLeaveStatement.ascx" />
     <Content Include="UserControls\Leave\ctlPendingLeaveList.ascx" />
     <Content Include="UserControls\Payroll\ctlTaxCalculation.ascx" />
@@ -699,6 +701,13 @@
     <Compile Include="Pages\EmpFileViewer.aspx.designer.cs">
       <DependentUpon>EmpFileViewer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EmpPresentStatus.aspx.cs">
+      <DependentUpon>EmpPresentStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EmpPresentStatus.aspx.designer.cs">
+      <DependentUpon>EmpPresentStatus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LeavePendingList.aspx.cs">
       <DependentUpon>LeavePendingList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -761,6 +770,13 @@
     </Compile>
     <Compile Include="UserControls\EIS\ctlEmpFileUpload.ascx.designer.cs">
       <DependentUpon>ctlEmpFileUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EIS\ctlEmpPresentStatus.ascx.cs">
+      <DependentUpon>ctlEmpPresentStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\EIS\ctlEmpPresentStatus.ascx.designer.cs">
+      <DependentUpon>ctlEmpPresentStatus.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Leave\ctlLeaveStatement.ascx.cs">
       <DependentUpon>ctlLeaveStatement.ascx</DependentUpon>
