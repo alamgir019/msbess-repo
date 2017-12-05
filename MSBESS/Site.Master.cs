@@ -90,7 +90,7 @@ namespace WebAdmin
                 lblUserIDFullName.InnerText = HttpContext.Current.Session["USERNAME"].ToString();
                 //imgUserAccount.Src = HttpContext.Current.Session["PHOTO"].ToString();
                 //imgUserSideBar.Src= HttpContext.Current.Session["PHOTO"].ToString();
-                //imgUserAccountDown.Src= HttpContext.Current.Session["PHOTO"].ToString();
+                //imgUserAccountDown.Src = HttpContext.Current.Session["PHOTO"].ToString();
                 DataTable dtEmpInfo = objEmpInfoMgr.SelectEmpInfo(HttpContext.Current.Session["EMPID"].ToString());
                 if (dtEmpInfo.Rows.Count > 0)
                 {
@@ -121,8 +121,8 @@ namespace WebAdmin
                 lblFullName.InnerText = HttpContext.Current.Session["USERNAME"].ToString();
                 lblDesig.InnerText = HttpContext.Current.Session["DESIGNATION"].ToString();
                 lblJoinDate.InnerText = "Employee Since " + HttpContext.Current.Session["JOINDATE"].ToString();
-                //Session["USERID"] = "Admin";
-                //Session["FISCALYRID"] = "1";
+                Session["USERID"] = "Admin";
+                Session["FISCALYRID"] = "1";
 
                 // For leave menu item check
                 if (Session["ISADMIN"].ToString().Trim() == "N")

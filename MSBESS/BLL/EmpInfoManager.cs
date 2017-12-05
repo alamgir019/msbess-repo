@@ -73,6 +73,38 @@ namespace WebAdmin.BLL
 
             return objDAL.CreateDT(command, "SelectEmpInfo");
         }
+
+        public DataTable SelectEmpPresentStatus(string EmpId)
+        {
+            if (objDAL.ds.Tables["EmpPresentStatus"] != null)
+            {
+                objDAL.ds.Tables["EmpPresentStatus"].Rows.Clear();
+                objDAL.ds.Tables["EmpPresentStatus"].Dispose();
+            }
+
+            string strSQL = "SELECT * FROM EmpPresentStatus WHERE 1=1 and status=0 and StatusDate=@StatusDate ";
+            string strCond = "";
+            if (EmpId != "")
+                strCond = strCond + " AND EmpId=@EmpId ";
+
+
+
+            strSQL = strSQL + strCond;
+
+            SqlCommand command = new SqlCommand(strSQL);
+            if (EmpId != "")
+            {
+                SqlParameter p_EmpId = command.Parameters.Add("EmpId", SqlDbType.VarChar);
+                p_EmpId.Direction = ParameterDirection.Input;
+                p_EmpId.Value = EmpId;
+            }
+            SqlParameter p_StatusDate = command.Parameters.Add("StatusDate", SqlDbType.DateTime);
+            p_StatusDate.Direction = ParameterDirection.Input;
+            p_StatusDate.IsNullable = true;
+            p_StatusDate.Value = DateTime.Now.ToShortDateString();
+
+            return objDAL.CreateDT(command, "EmpPresentStatus");
+        }
         public DataTable GetSuperVisiorWiseEmp(string strEmpID, string strDivID,DataTable dtEmpList)
         {
             int i = 0;

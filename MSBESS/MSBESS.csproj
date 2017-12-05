@@ -473,6 +473,7 @@
     <Content Include="Pages\AwayFromDesk.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
     <Content Include="Pages\EmpBloodGroupSearch.aspx" />
+    <Content Include="Pages\EmpFileReader.aspx" />
     <Content Include="Pages\EmpFileUpload.aspx" />
     <Content Include="Pages\EmpFileViewer.aspx" />
     <Content Include="Pages\EmpPresentStatus.aspx" />
@@ -484,6 +485,7 @@
     <Content Include="UserControls\Attendance\ctlMonthlyAttendance.ascx" />
     <Content Include="UserControls\EIS\ctlChangePassword.ascx" />
     <Content Include="UserControls\EIS\ctlEmpBloodGroupSearch.ascx" />
+    <Content Include="UserControls\EIS\ctlEmpFileReader.ascx" />
     <Content Include="UserControls\EIS\ctlEmpFileUpload.ascx" />
     <Content Include="UserControls\EIS\ctlEmpPresentStatus.ascx" />
     <Content Include="UserControls\Leave\ctlLeaveStatement.ascx" />
@@ -687,6 +689,13 @@
     <Compile Include="Pages\EmpBloodGroupSearch.aspx.designer.cs">
       <DependentUpon>EmpBloodGroupSearch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EmpFileReader.aspx.cs">
+      <DependentUpon>EmpFileReader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EmpFileReader.aspx.designer.cs">
+      <DependentUpon>EmpFileReader.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EmpFileUpload.aspx.cs">
       <DependentUpon>EmpFileUpload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -763,6 +772,13 @@
     </Compile>
     <Compile Include="UserControls\EIS\ctlEmpBloodGroupSearch.ascx.designer.cs">
       <DependentUpon>ctlEmpBloodGroupSearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EIS\ctlEmpFileReader.ascx.cs">
+      <DependentUpon>ctlEmpFileReader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\EIS\ctlEmpFileReader.ascx.designer.cs">
+      <DependentUpon>ctlEmpFileReader.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EIS\ctlEmpFileUpload.ascx.cs">
       <DependentUpon>ctlEmpFileUpload.ascx</DependentUpon>
