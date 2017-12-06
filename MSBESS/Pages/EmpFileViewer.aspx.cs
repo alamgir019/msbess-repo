@@ -13,7 +13,9 @@ namespace WebAdmin.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             // string strParams = Request.QueryString["params"];
+            
             WebClient client = new WebClient();
+            
             Byte[] buffer = client.DownloadData(Server.MapPath(Session["FILEPATH"].ToString()));
 
             if (buffer != null)

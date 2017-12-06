@@ -33,6 +33,7 @@ namespace WebAdmin.UserControls.EIS
             TreeNode RootNode = OutputDirectory(RootDir, null,0);
             MyTree.Nodes.Add(RootNode);
             MyTree.ExpandDepth = 1;
+            
         }
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -110,7 +111,7 @@ namespace WebAdmin.UserControls.EIS
             }
             //TabContainer1.ActiveTabIndex = 0;
         }
-
+                   
         TreeNode OutputDirectory(System.IO.DirectoryInfo directory, TreeNode parentNode,int depth)
         {
             depth++;
@@ -143,17 +144,13 @@ namespace WebAdmin.UserControls.EIS
             {
                 DirNode.ChildNodes.Add(new TreeNode(Files[FileCount].Name, Files[FileCount].Name));
             }
-
             if (parentNode == null)
             {
                 return DirNode;
             }
-
             else
             {
-
                 parentNode.ChildNodes.Add(DirNode);
-
                 return parentNode;
             }
         }

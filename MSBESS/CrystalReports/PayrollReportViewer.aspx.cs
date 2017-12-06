@@ -45,7 +45,6 @@ namespace WebAdmin.CrystalReports
             switch (Session["REPORTID"].ToString())
             {
                 case "PS":
-                    //ReportPath = Server.MapPath("~/CrystalReports/CrystalReport1.rpt");
                     ReportPath = Server.MapPath("~/CrystalReports/rptSalPaySlipAll.rpt");
                     ReportDoc.Load(ReportPath);
                     string month = Session["VMonth"].ToString();
@@ -64,6 +63,17 @@ namespace WebAdmin.CrystalReports
                     ReportDoc.SetParameterValue("ComLogo", LogoPath);
                     CRVT.ReportSource = ReportDoc;
                     break;
+                case "PF":
+                    {
+                        ReportPath = Server.MapPath("~/CrystalReports/rptYearlyPFBalance.rpt");
+                        ReportDoc.Load(ReportPath);
+                        MyDataTable = rptManager.Get_AnnualReport(Session["FisYear"].ToString(), Session["SalDiv"].ToString(), Session["EmpID"].ToString(), "YPFC", "-1"); //Session["YearlyType"].ToString()
+                        ReportDoc.SetDataSource(MyDataTable);
+                        ReportDoc.SetParameterValue("P_Header", "Yearly PF Contribution For The Fiscal Year " + Session["FisYearText"].ToString());
+                        ReportDoc.SetParameterValue("ComLogo", LogoPath);
+                        CRVT.ReportSource = ReportDoc;
+                        break;
+                    }
             }
         }
         //protected string CountStatus(string strStatus, DataTable dt)

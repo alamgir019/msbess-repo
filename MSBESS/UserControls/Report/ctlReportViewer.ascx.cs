@@ -20,12 +20,20 @@ namespace WebAdmin.UserControls.Report
                 Common.FillYearList(5, ddlYear);
                 DateTime now = DateTime.Now;
                 ddlYear.SelectedValue = Convert.ToInt32(now.Year).ToString();
-                Common.FillDropDownList(empManager.SelectFiscalYear(0, "FA"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
                 Common.FillMonthList(ddlMonthFrm);
                 ddlMonthFrm.SelectedValue = Convert.ToInt32(now.Month).ToString();
                 txtDesig.Text = Session["DESIGNATION"].ToString();
                 txtEmpCode.Text = Session["EMPID"].ToString();
-                PanelVisibilityMst("0", "1", "0", "0", "0", "1", "0", "0", "1", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+                if (Session["REPORTID"].ToString()=="PS")
+                {
+                Common.FillDropDownList(empManager.SelectFiscalYear(0, "FA"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
+                    PanelVisibilityMst("0", "1", "0", "0", "0", "1", "0", "0", "1", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+                }
+                else if (Session["REPORTID"].ToString() == "PF")
+                {
+                Common.FillDropDownList(empManager.SelectFiscalYear(0, "P"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
+                    PanelVisibilityMst("0", "0", "0", "0", "0", "1", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+                }
             }
         }
 

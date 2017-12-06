@@ -125,6 +125,36 @@ namespace WebAdmin.BLL
             objDAL.CreateDSFromProc(cmd, "dtSalarySSourandEmpWise");
             return objDAL.ds.Tables["dtSalarySSourandEmpWise"];
         }
+
+        // Get_AnnualReport
+        public DataTable Get_AnnualReport(string FisYear, string SalDiv, string EmpID, string sHeadtype, string sEmpTypeID)
+        {
+            SqlCommand cmd = new SqlCommand("proc_Payroll_Rpt_AnnualReport");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter p_Year = cmd.Parameters.Add("FisYear", SqlDbType.BigInt);
+            p_Year.Direction = ParameterDirection.Input;
+            p_Year.Value = Convert.ToInt32(FisYear);
+
+            SqlParameter p_SalDiv = cmd.Parameters.Add("SalDiv", SqlDbType.Char);
+            p_SalDiv.Direction = ParameterDirection.Input;
+            p_SalDiv.Value = SalDiv;
+
+            SqlParameter p_EmpID = cmd.Parameters.Add("EmpID", SqlDbType.Char);
+            p_EmpID.Direction = ParameterDirection.Input;
+            p_EmpID.Value = EmpID;
+
+            SqlParameter p_Headtype = cmd.Parameters.Add("Headtype", SqlDbType.Char);
+            p_Headtype.Direction = ParameterDirection.Input;
+            p_Headtype.Value = sHeadtype;
+
+            SqlParameter p_EType = cmd.Parameters.Add("EmpTypeID", SqlDbType.BigInt);
+            p_EType.Direction = ParameterDirection.Input;
+            p_EType.Value = Convert.ToInt32(sEmpTypeID);
+
+            objDAL.CreateDSFromProc(cmd, "dtAnnualReport");
+            return objDAL.ds.Tables["dtAnnualReport"];
+        }
         #endregion
     }
 }

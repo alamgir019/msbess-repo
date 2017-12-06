@@ -28,6 +28,8 @@ namespace WebAdmin.App_Data {
         
         private dtPaySlipAllDataTable tabledtPaySlipAll;
         
+        private dtYearlyPFContributionDataTable tabledtYearlyPFContribution;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace WebAdmin.App_Data {
                 }
                 if ((ds.Tables["dtPaySlipAll"] != null)) {
                     base.Tables.Add(new dtPaySlipAllDataTable(ds.Tables["dtPaySlipAll"]));
+                }
+                if ((ds.Tables["dtYearlyPFContribution"] != null)) {
+                    base.Tables.Add(new dtYearlyPFContributionDataTable(ds.Tables["dtYearlyPFContribution"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace WebAdmin.App_Data {
         public dtPaySlipAllDataTable dtPaySlipAll {
             get {
                 return this.tabledtPaySlipAll;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public dtYearlyPFContributionDataTable dtYearlyPFContribution {
+            get {
+                return this.tabledtYearlyPFContribution;
             }
         }
         
@@ -173,6 +188,9 @@ namespace WebAdmin.App_Data {
                 if ((ds.Tables["dtPaySlipAll"] != null)) {
                     base.Tables.Add(new dtPaySlipAllDataTable(ds.Tables["dtPaySlipAll"]));
                 }
+                if ((ds.Tables["dtYearlyPFContribution"] != null)) {
+                    base.Tables.Add(new dtYearlyPFContributionDataTable(ds.Tables["dtYearlyPFContribution"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace WebAdmin.App_Data {
                     this.tabledtPaySlipAll.InitVars();
                 }
             }
+            this.tabledtYearlyPFContribution = ((dtYearlyPFContributionDataTable)(base.Tables["dtYearlyPFContribution"]));
+            if ((initTable == true)) {
+                if ((this.tabledtYearlyPFContribution != null)) {
+                    this.tabledtYearlyPFContribution.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace WebAdmin.App_Data {
             base.Tables.Add(this.tableEmpInfo);
             this.tabledtPaySlipAll = new dtPaySlipAllDataTable();
             base.Tables.Add(this.tabledtPaySlipAll);
+            this.tabledtYearlyPFContribution = new dtYearlyPFContributionDataTable();
+            base.Tables.Add(this.tabledtYearlyPFContribution);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace WebAdmin.App_Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializedtPaySlipAll() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializedtYearlyPFContribution() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace WebAdmin.App_Data {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void dtPaySlipAllRowChangeEventHandler(object sender, dtPaySlipAllRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void dtYearlyPFContributionRowChangeEventHandler(object sender, dtYearlyPFContributionRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1299,6 +1334,674 @@ namespace WebAdmin.App_Data {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "dtPaySlipAllDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class dtYearlyPFContributionDataTable : global::System.Data.TypedTableBase<dtYearlyPFContributionRow> {
+            
+            private global::System.Data.DataColumn columnempid;
+            
+            private global::System.Data.DataColumn columnfullname;
+            
+            private global::System.Data.DataColumn columnJoiningDate;
+            
+            private global::System.Data.DataColumn columnConfirmationDate;
+            
+            private global::System.Data.DataColumn columnDesigName;
+            
+            private global::System.Data.DataColumn columnDeptName;
+            
+            private global::System.Data.DataColumn columnSectorName;
+            
+            private global::System.Data.DataColumn columnPFFISCALYRID;
+            
+            private global::System.Data.DataColumn columnSalLocId;
+            
+            private global::System.Data.DataColumn columnSalSubLocId;
+            
+            private global::System.Data.DataColumn columnSalLocName;
+            
+            private global::System.Data.DataColumn columnSalSubLocName;
+            
+            private global::System.Data.DataColumn columnFiscalYrTitle;
+            
+            private global::System.Data.DataColumn columnJul;
+            
+            private global::System.Data.DataColumn columnAug;
+            
+            private global::System.Data.DataColumn columnSep;
+            
+            private global::System.Data.DataColumn columnOct;
+            
+            private global::System.Data.DataColumn columnNov;
+            
+            private global::System.Data.DataColumn columnDec;
+            
+            private global::System.Data.DataColumn columnJan;
+            
+            private global::System.Data.DataColumn columnFeb;
+            
+            private global::System.Data.DataColumn columnMar;
+            
+            private global::System.Data.DataColumn columnApr;
+            
+            private global::System.Data.DataColumn columnMay;
+            
+            private global::System.Data.DataColumn columnJun;
+            
+            private global::System.Data.DataColumn columnCarryForward;
+            
+            private global::System.Data.DataColumn columnBroadForward;
+            
+            private global::System.Data.DataColumn columnTotalInterest;
+            
+            private global::System.Data.DataColumn columnServiceLength;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public dtYearlyPFContributionDataTable() {
+                this.TableName = "dtYearlyPFContribution";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal dtYearlyPFContributionDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected dtYearlyPFContributionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn empidColumn {
+                get {
+                    return this.columnempid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fullnameColumn {
+                get {
+                    return this.columnfullname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JoiningDateColumn {
+                get {
+                    return this.columnJoiningDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ConfirmationDateColumn {
+                get {
+                    return this.columnConfirmationDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DesigNameColumn {
+                get {
+                    return this.columnDesigName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DeptNameColumn {
+                get {
+                    return this.columnDeptName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SectorNameColumn {
+                get {
+                    return this.columnSectorName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PFFISCALYRIDColumn {
+                get {
+                    return this.columnPFFISCALYRID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SalLocIdColumn {
+                get {
+                    return this.columnSalLocId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SalSubLocIdColumn {
+                get {
+                    return this.columnSalSubLocId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SalLocNameColumn {
+                get {
+                    return this.columnSalLocName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SalSubLocNameColumn {
+                get {
+                    return this.columnSalSubLocName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FiscalYrTitleColumn {
+                get {
+                    return this.columnFiscalYrTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JulColumn {
+                get {
+                    return this.columnJul;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AugColumn {
+                get {
+                    return this.columnAug;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SepColumn {
+                get {
+                    return this.columnSep;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OctColumn {
+                get {
+                    return this.columnOct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NovColumn {
+                get {
+                    return this.columnNov;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DecColumn {
+                get {
+                    return this.columnDec;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JanColumn {
+                get {
+                    return this.columnJan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FebColumn {
+                get {
+                    return this.columnFeb;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MarColumn {
+                get {
+                    return this.columnMar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AprColumn {
+                get {
+                    return this.columnApr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MayColumn {
+                get {
+                    return this.columnMay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JunColumn {
+                get {
+                    return this.columnJun;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CarryForwardColumn {
+                get {
+                    return this.columnCarryForward;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BroadForwardColumn {
+                get {
+                    return this.columnBroadForward;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalInterestColumn {
+                get {
+                    return this.columnTotalInterest;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ServiceLengthColumn {
+                get {
+                    return this.columnServiceLength;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public dtYearlyPFContributionRow this[int index] {
+                get {
+                    return ((dtYearlyPFContributionRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event dtYearlyPFContributionRowChangeEventHandler dtYearlyPFContributionRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event dtYearlyPFContributionRowChangeEventHandler dtYearlyPFContributionRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event dtYearlyPFContributionRowChangeEventHandler dtYearlyPFContributionRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event dtYearlyPFContributionRowChangeEventHandler dtYearlyPFContributionRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AdddtYearlyPFContributionRow(dtYearlyPFContributionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public dtYearlyPFContributionRow AdddtYearlyPFContributionRow(
+                        string empid, 
+                        string fullname, 
+                        System.DateTime JoiningDate, 
+                        System.DateTime ConfirmationDate, 
+                        string DesigName, 
+                        string DeptName, 
+                        string SectorName, 
+                        string PFFISCALYRID, 
+                        string SalLocId, 
+                        string SalSubLocId, 
+                        string SalLocName, 
+                        string SalSubLocName, 
+                        string FiscalYrTitle, 
+                        double Jul, 
+                        double Aug, 
+                        double Sep, 
+                        double Oct, 
+                        double Nov, 
+                        double Dec, 
+                        double Jan, 
+                        double Feb, 
+                        double Mar, 
+                        double Apr, 
+                        double May, 
+                        double Jun, 
+                        double CarryForward, 
+                        double BroadForward, 
+                        double TotalInterest, 
+                        string ServiceLength) {
+                dtYearlyPFContributionRow rowdtYearlyPFContributionRow = ((dtYearlyPFContributionRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        empid,
+                        fullname,
+                        JoiningDate,
+                        ConfirmationDate,
+                        DesigName,
+                        DeptName,
+                        SectorName,
+                        PFFISCALYRID,
+                        SalLocId,
+                        SalSubLocId,
+                        SalLocName,
+                        SalSubLocName,
+                        FiscalYrTitle,
+                        Jul,
+                        Aug,
+                        Sep,
+                        Oct,
+                        Nov,
+                        Dec,
+                        Jan,
+                        Feb,
+                        Mar,
+                        Apr,
+                        May,
+                        Jun,
+                        CarryForward,
+                        BroadForward,
+                        TotalInterest,
+                        ServiceLength};
+                rowdtYearlyPFContributionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtYearlyPFContributionRow);
+                return rowdtYearlyPFContributionRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                dtYearlyPFContributionDataTable cln = ((dtYearlyPFContributionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new dtYearlyPFContributionDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnempid = base.Columns["empid"];
+                this.columnfullname = base.Columns["fullname"];
+                this.columnJoiningDate = base.Columns["JoiningDate"];
+                this.columnConfirmationDate = base.Columns["ConfirmationDate"];
+                this.columnDesigName = base.Columns["DesigName"];
+                this.columnDeptName = base.Columns["DeptName"];
+                this.columnSectorName = base.Columns["SectorName"];
+                this.columnPFFISCALYRID = base.Columns["PFFISCALYRID"];
+                this.columnSalLocId = base.Columns["SalLocId"];
+                this.columnSalSubLocId = base.Columns["SalSubLocId"];
+                this.columnSalLocName = base.Columns["SalLocName"];
+                this.columnSalSubLocName = base.Columns["SalSubLocName"];
+                this.columnFiscalYrTitle = base.Columns["FiscalYrTitle"];
+                this.columnJul = base.Columns["Jul"];
+                this.columnAug = base.Columns["Aug"];
+                this.columnSep = base.Columns["Sep"];
+                this.columnOct = base.Columns["Oct"];
+                this.columnNov = base.Columns["Nov"];
+                this.columnDec = base.Columns["Dec"];
+                this.columnJan = base.Columns["Jan"];
+                this.columnFeb = base.Columns["Feb"];
+                this.columnMar = base.Columns["Mar"];
+                this.columnApr = base.Columns["Apr"];
+                this.columnMay = base.Columns["May"];
+                this.columnJun = base.Columns["Jun"];
+                this.columnCarryForward = base.Columns["CarryForward"];
+                this.columnBroadForward = base.Columns["BroadForward"];
+                this.columnTotalInterest = base.Columns["TotalInterest"];
+                this.columnServiceLength = base.Columns["ServiceLength"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnempid = new global::System.Data.DataColumn("empid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnempid);
+                this.columnfullname = new global::System.Data.DataColumn("fullname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfullname);
+                this.columnJoiningDate = new global::System.Data.DataColumn("JoiningDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJoiningDate);
+                this.columnConfirmationDate = new global::System.Data.DataColumn("ConfirmationDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnConfirmationDate);
+                this.columnDesigName = new global::System.Data.DataColumn("DesigName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesigName);
+                this.columnDeptName = new global::System.Data.DataColumn("DeptName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeptName);
+                this.columnSectorName = new global::System.Data.DataColumn("SectorName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSectorName);
+                this.columnPFFISCALYRID = new global::System.Data.DataColumn("PFFISCALYRID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPFFISCALYRID);
+                this.columnSalLocId = new global::System.Data.DataColumn("SalLocId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalLocId);
+                this.columnSalSubLocId = new global::System.Data.DataColumn("SalSubLocId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalSubLocId);
+                this.columnSalLocName = new global::System.Data.DataColumn("SalLocName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalLocName);
+                this.columnSalSubLocName = new global::System.Data.DataColumn("SalSubLocName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalSubLocName);
+                this.columnFiscalYrTitle = new global::System.Data.DataColumn("FiscalYrTitle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFiscalYrTitle);
+                this.columnJul = new global::System.Data.DataColumn("Jul", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJul);
+                this.columnAug = new global::System.Data.DataColumn("Aug", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAug);
+                this.columnSep = new global::System.Data.DataColumn("Sep", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSep);
+                this.columnOct = new global::System.Data.DataColumn("Oct", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOct);
+                this.columnNov = new global::System.Data.DataColumn("Nov", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNov);
+                this.columnDec = new global::System.Data.DataColumn("Dec", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDec);
+                this.columnJan = new global::System.Data.DataColumn("Jan", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJan);
+                this.columnFeb = new global::System.Data.DataColumn("Feb", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFeb);
+                this.columnMar = new global::System.Data.DataColumn("Mar", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMar);
+                this.columnApr = new global::System.Data.DataColumn("Apr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnApr);
+                this.columnMay = new global::System.Data.DataColumn("May", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMay);
+                this.columnJun = new global::System.Data.DataColumn("Jun", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJun);
+                this.columnCarryForward = new global::System.Data.DataColumn("CarryForward", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCarryForward);
+                this.columnBroadForward = new global::System.Data.DataColumn("BroadForward", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBroadForward);
+                this.columnTotalInterest = new global::System.Data.DataColumn("TotalInterest", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalInterest);
+                this.columnServiceLength = new global::System.Data.DataColumn("ServiceLength", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServiceLength);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public dtYearlyPFContributionRow NewdtYearlyPFContributionRow() {
+                return ((dtYearlyPFContributionRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new dtYearlyPFContributionRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(dtYearlyPFContributionRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.dtYearlyPFContributionRowChanged != null)) {
+                    this.dtYearlyPFContributionRowChanged(this, new dtYearlyPFContributionRowChangeEvent(((dtYearlyPFContributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.dtYearlyPFContributionRowChanging != null)) {
+                    this.dtYearlyPFContributionRowChanging(this, new dtYearlyPFContributionRowChangeEvent(((dtYearlyPFContributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.dtYearlyPFContributionRowDeleted != null)) {
+                    this.dtYearlyPFContributionRowDeleted(this, new dtYearlyPFContributionRowChangeEvent(((dtYearlyPFContributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.dtYearlyPFContributionRowDeleting != null)) {
+                    this.dtYearlyPFContributionRowDeleting(this, new dtYearlyPFContributionRowChangeEvent(((dtYearlyPFContributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovedtYearlyPFContributionRow(dtYearlyPFContributionRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsReports ds = new dsReports();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "dtYearlyPFContributionDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2389,6 +3092,838 @@ namespace WebAdmin.App_Data {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class dtYearlyPFContributionRow : global::System.Data.DataRow {
+            
+            private dtYearlyPFContributionDataTable tabledtYearlyPFContribution;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal dtYearlyPFContributionRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tabledtYearlyPFContribution = ((dtYearlyPFContributionDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string empid {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.empidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'empid\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.empidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string fullname {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.fullnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fullname\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.fullnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime JoiningDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledtYearlyPFContribution.JoiningDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JoiningDate\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.JoiningDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime ConfirmationDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledtYearlyPFContribution.ConfirmationDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ConfirmationDate\' in table \'dtYearlyPFContribution\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.ConfirmationDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DesigName {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.DesigNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DesigName\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.DesigNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DeptName {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.DeptNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeptName\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.DeptNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SectorName {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.SectorNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SectorName\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.SectorNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PFFISCALYRID {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.PFFISCALYRIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PFFISCALYRID\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.PFFISCALYRIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SalLocId {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.SalLocIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SalLocId\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.SalLocIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SalSubLocId {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.SalSubLocIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SalSubLocId\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.SalSubLocIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SalLocName {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.SalLocNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SalLocName\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.SalLocNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SalSubLocName {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.SalSubLocNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SalSubLocName\' in table \'dtYearlyPFContribution\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.SalSubLocNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FiscalYrTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.FiscalYrTitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FiscalYrTitle\' in table \'dtYearlyPFContribution\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.FiscalYrTitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Jul {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.JulColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Jul\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.JulColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Aug {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.AugColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Aug\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.AugColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Sep {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.SepColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Sep\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.SepColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Oct {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.OctColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Oct\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.OctColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Nov {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.NovColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nov\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.NovColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Dec {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.DecColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Dec\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.DecColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Jan {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.JanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Jan\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.JanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Feb {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.FebColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Feb\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.FebColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Mar {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.MarColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Mar\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.MarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Apr {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.AprColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Apr\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.AprColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double May {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.MayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'May\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.MayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Jun {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.JunColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Jun\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.JunColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double CarryForward {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.CarryForwardColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CarryForward\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.CarryForwardColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double BroadForward {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.BroadForwardColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BroadForward\' in table \'dtYearlyPFContribution\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.BroadForwardColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double TotalInterest {
+                get {
+                    try {
+                        return ((double)(this[this.tabledtYearlyPFContribution.TotalInterestColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalInterest\' in table \'dtYearlyPFContribution\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.TotalInterestColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ServiceLength {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtYearlyPFContribution.ServiceLengthColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ServiceLength\' in table \'dtYearlyPFContribution\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtYearlyPFContribution.ServiceLengthColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsempidNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.empidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetempidNull() {
+                this[this.tabledtYearlyPFContribution.empidColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfullnameNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.fullnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfullnameNull() {
+                this[this.tabledtYearlyPFContribution.fullnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJoiningDateNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.JoiningDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJoiningDateNull() {
+                this[this.tabledtYearlyPFContribution.JoiningDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsConfirmationDateNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.ConfirmationDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetConfirmationDateNull() {
+                this[this.tabledtYearlyPFContribution.ConfirmationDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDesigNameNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.DesigNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDesigNameNull() {
+                this[this.tabledtYearlyPFContribution.DesigNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDeptNameNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.DeptNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDeptNameNull() {
+                this[this.tabledtYearlyPFContribution.DeptNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSectorNameNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.SectorNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSectorNameNull() {
+                this[this.tabledtYearlyPFContribution.SectorNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPFFISCALYRIDNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.PFFISCALYRIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPFFISCALYRIDNull() {
+                this[this.tabledtYearlyPFContribution.PFFISCALYRIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSalLocIdNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.SalLocIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSalLocIdNull() {
+                this[this.tabledtYearlyPFContribution.SalLocIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSalSubLocIdNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.SalSubLocIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSalSubLocIdNull() {
+                this[this.tabledtYearlyPFContribution.SalSubLocIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSalLocNameNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.SalLocNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSalLocNameNull() {
+                this[this.tabledtYearlyPFContribution.SalLocNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSalSubLocNameNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.SalSubLocNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSalSubLocNameNull() {
+                this[this.tabledtYearlyPFContribution.SalSubLocNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFiscalYrTitleNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.FiscalYrTitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFiscalYrTitleNull() {
+                this[this.tabledtYearlyPFContribution.FiscalYrTitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJulNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.JulColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJulNull() {
+                this[this.tabledtYearlyPFContribution.JulColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAugNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.AugColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAugNull() {
+                this[this.tabledtYearlyPFContribution.AugColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSepNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.SepColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSepNull() {
+                this[this.tabledtYearlyPFContribution.SepColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOctNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.OctColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOctNull() {
+                this[this.tabledtYearlyPFContribution.OctColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNovNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.NovColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNovNull() {
+                this[this.tabledtYearlyPFContribution.NovColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDecNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.DecColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDecNull() {
+                this[this.tabledtYearlyPFContribution.DecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJanNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.JanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJanNull() {
+                this[this.tabledtYearlyPFContribution.JanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFebNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.FebColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFebNull() {
+                this[this.tabledtYearlyPFContribution.FebColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMarNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.MarColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMarNull() {
+                this[this.tabledtYearlyPFContribution.MarColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAprNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.AprColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAprNull() {
+                this[this.tabledtYearlyPFContribution.AprColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMayNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.MayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMayNull() {
+                this[this.tabledtYearlyPFContribution.MayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJunNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.JunColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJunNull() {
+                this[this.tabledtYearlyPFContribution.JunColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCarryForwardNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.CarryForwardColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCarryForwardNull() {
+                this[this.tabledtYearlyPFContribution.CarryForwardColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBroadForwardNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.BroadForwardColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBroadForwardNull() {
+                this[this.tabledtYearlyPFContribution.BroadForwardColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalInterestNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.TotalInterestColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalInterestNull() {
+                this[this.tabledtYearlyPFContribution.TotalInterestColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsServiceLengthNull() {
+                return this.IsNull(this.tabledtYearlyPFContribution.ServiceLengthColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetServiceLengthNull() {
+                this[this.tabledtYearlyPFContribution.ServiceLengthColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2442,6 +3977,40 @@ namespace WebAdmin.App_Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtPaySlipAllRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class dtYearlyPFContributionRowChangeEvent : global::System.EventArgs {
+            
+            private dtYearlyPFContributionRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public dtYearlyPFContributionRowChangeEvent(dtYearlyPFContributionRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public dtYearlyPFContributionRow Row {
                 get {
                     return this.eventRow;
                 }

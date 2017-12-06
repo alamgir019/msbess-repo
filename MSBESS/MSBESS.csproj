@@ -662,6 +662,12 @@
       <DependentUpon>rptSalPaySlipAll.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReports\rptYearlyPFBalance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptYearlyPFBalance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\UserCreation.cs" />
     <Compile Include="App_Data\dsReports.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1081,6 +1087,10 @@
     <EmbeddedResource Include="CrystalReports\rptSalPaySlipAll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSalPaySlipAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\rptYearlyPFBalance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptYearlyPFBalance.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
