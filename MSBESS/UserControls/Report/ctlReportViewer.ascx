@@ -32,13 +32,8 @@
                     <asp:Panel ID="PEmpId" runat="server" BorderColor="DarkGray" BorderStyle="Solid" BorderWidth="1px" Visible="False">
                         <asp:Label ID="Label6" runat="server" CssClass="textlevel" Text="Emp Id :"></asp:Label>                                                            
                         <asp:TextBox ID="txtEmpCode" runat="server" ReadOnly="true"></asp:TextBox>                                                           
-                    </asp:Panel>                            
-                    <div style="padding-right: 15px; float: left;">
-                        <asp:Panel ID="PShow" runat="server" Visible="False">
-                            <asp:Button ID="btnShow" runat="server" Text="Show Report" OnClick="btnShow_Click" Font-Underline="False"></asp:Button>
-                        </asp:Panel>
-                    </div>
-                    <table style="width: 340px;">
+                    </asp:Panel>  
+                    <table style="width: 540px; margin:10px 0 0 0;">
                         <tbody>
                             <tr>
                                 <td style="width: 431px">
@@ -412,41 +407,49 @@
                             <tr>
                                 <td>
                                     <asp:Panel ID="pDate" runat="server" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="1px"
-                                        Width="420px" Visible="False">
+                                        Width="530px" Visible="False">
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td style="width: 20px">
-                                                        <asp:Label ID="Label4" runat="server" Text="From :" Width="100px" CssClass="textlevel"></asp:Label>
+                                                    <td style="width: 50px">
+                                                        <asp:Label ID="Label4" runat="server" Text="From :" CssClass="textlevel"></asp:Label>
                                                     </td>
-                                                    <td style="width: 66px">
-                                                        <asp:TextBox ID="txtFromDate" runat="server" Width="80px" MaxLength="10"></asp:TextBox>
+                                                    <td style="width: 215px">
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group date">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </div>
+                                                                <asp:TextBox ID="txtFromDate" runat="server" class="form-control pull-right datepicker"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                                ControlToValidate="txtFromDate" ErrorMessage="INVALID" class="text-danger validator"
+                                                                ValidationExpression="^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-./])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$"></asp:RegularExpressionValidator>
+                                                        </div>
                                                     </td>
-                                                    <td style="width: 70px">
-                                                        <a href="javascript:NewCal('<%= txtFromDate.ClientID %>','ddmmyyyy')">
-                                                            <img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px"
-                                                                height="16" alt="Pick a date" src="../../images/cal.gif" width="16" /></a>
+                                                    <td style="width: 50px">
+                                                        <asp:Label ID="Label5" runat="server" Text="To :" CssClass="textlevel"></asp:Label>
                                                     </td>
-                                                    <td style="width: 5px">
-                                                        <asp:Label ID="Label5" runat="server" Text="To :" CssClass="textlevel" Width="80px"></asp:Label>
-                                                    </td>
-                                                    <td style="width: 62px">
-                                                        <asp:TextBox ID="txtToDate" runat="server" Width="80px" MaxLength="10"></asp:TextBox>
-                                                    </td>
-                                                    <td style="width: 99px">
-                                                        <a href="javascript:NewCal('<%= txtToDate.ClientID %>','ddmmyyyy')">
-                                                            <img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px"
-                                                                height="16" alt="Pick a date" src="../../Images/cal.gif" width="16" /></a>
+                                                    <td style="width: 215px">
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group date">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </div>
+                                                                <asp:TextBox ID="txtToDate" runat="server" class="form-control pull-right datepicker"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                                                ControlToValidate="txtToDate" ErrorMessage="INVALID" class="text-danger validator"
+                                                                ValidationExpression="^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-./])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$"></asp:RegularExpressionValidator>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="txtFromDate"
-                                            ValidChars="/" FilterType="Custom,Numbers" Enabled="true">
-                                        </cc1:FilteredTextBoxExtender>
-                                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="txtToDate"
-                                            ValidChars="/" FilterType="Custom,Numbers" Enabled="true">
-                                        </cc1:FilteredTextBoxExtender>--%>
                                     </asp:Panel>
                                 </td>
                             </tr>
@@ -921,7 +924,12 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>                          
+                    <div style="padding-right: 15px; float: left;">
+                        <asp:Panel ID="PShow" runat="server" Visible="False">
+                            <asp:Button ID="btnShow" runat="server" Text="Show Report" OnClick="btnShow_Click" Font-Underline="False"></asp:Button>
+                        </asp:Panel>
+                    </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

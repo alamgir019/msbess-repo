@@ -656,6 +656,12 @@
     <Compile Include="CrystalReports\PayrollReportViewer.aspx.designer.cs">
       <DependentUpon>PayrollReportViewer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReports\rptAttandance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAttandance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReports\rptSalPaySlipAll.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1083,6 +1089,10 @@
     <EmbeddedResource Include="CrystalReports\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\rptAttandance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAttandance.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\rptSalPaySlipAll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

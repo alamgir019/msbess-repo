@@ -74,6 +74,26 @@ namespace WebAdmin.CrystalReports
                         CRVT.ReportSource = ReportDoc;
                         break;
                     }
+                case "ATD":
+                    {
+                        ReportPath = Server.MapPath("~/CrystalReports/rptAttandance.rpt");
+                        ReportDoc.Load(ReportPath);
+
+                        MyDataTable = rptManager.Get_Attandance(Session["Flag"].ToString(), Session["USERID"].ToString(), Session["ISADMIN"].ToString(), Session["FromDate"].ToString(), Session["ToDate"].ToString(),
+                            Session["DivisionId"].ToString(), Session["SbuId"].ToString(), Session["DeptId"].ToString(), Session["EmpId"].ToString(),
+                            Session["ShiftID"].ToString(), Session["isClosed"].ToString());
+                        
+                        ReportDoc.SetDataSource(MyDataTable);
+                        ReportDoc.SetParameterValue("pDIV", Session["DivisionId"].ToString());
+                        ReportDoc.SetParameterValue("pSBU", Session["SbuId"].ToString());
+                        ReportDoc.SetParameterValue("pDEP", Session["DeptId"].ToString().Trim());
+                        ReportDoc.SetParameterValue("FromDate", Session["FromDate"].ToString());
+                        ReportDoc.SetParameterValue("ToDate", Session["ToDate"].ToString());
+                        ReportDoc.SetParameterValue("pHeader", "Attendance Report");
+                        ReportDoc.SetParameterValue("ComLogo", LogoPath);
+                        CRVT.ReportSource = ReportDoc;
+                        break;
+                    }
             }
         }
         //protected string CountStatus(string strStatus, DataTable dt)

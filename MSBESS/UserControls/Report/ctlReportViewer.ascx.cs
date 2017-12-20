@@ -34,6 +34,11 @@ namespace WebAdmin.UserControls.Report
                 Common.FillDropDownList(empManager.SelectFiscalYear(0, "P"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
                     PanelVisibilityMst("0", "0", "0", "0", "0", "1", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
                 }
+                else if (Session["REPORTID"].ToString() == "ATD")
+                {
+                    Common.FillDropDownList(empManager.SelectFiscalYear(0, "P"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
+                    PanelVisibilityMst("0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+                }
             }
         }
 
@@ -44,7 +49,18 @@ namespace WebAdmin.UserControls.Report
             Session["FisYear"] = ddlFisYear.SelectedValue.ToString();
             Session["VMonth"] = ddlMonthFrm.SelectedValue.ToString();
             Session["VYear"] = ddlYear.SelectedValue.ToString();
-                        
+
+
+            Session["Flag"] = "E";
+            Session["FromDate"] = txtFromDate.Text;
+            Session["ToDate"] = txtToDate.Text;
+            Session["DivisionId"] = ddlDivision.SelectedValue.ToString();
+            Session["SbuId"] = "-1";
+            Session["DeptId"] = ddlDept.SelectedValue.ToString();
+            Session["EmpId"] = txtEmpCode.Text.Trim();
+            Session["ShiftID"] = "-1";
+            Session["IsClosed"] = ddlIsClosed.SelectedValue.ToString();
+            
             //Open New Window
             StringBuilder sb = new StringBuilder();
 
