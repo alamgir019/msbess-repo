@@ -39,6 +39,12 @@ namespace WebAdmin.UserControls.Report
                     Common.FillDropDownList(empManager.SelectFiscalYear(0, "P"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
                     PanelVisibilityMst("0", "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
                 }
+
+                else if (Session["REPORTID"].ToString() == "ITA")
+                {
+                    Common.FillDropDownList(empManager.SelectFiscalYear(0, "T"), ddlFisYear, "FISCALYRTITLE", "FISCALYRID", false, "-1");
+                    PanelVisibilityMst("0", "0", "0", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+                }
             }
         }
 
@@ -60,7 +66,7 @@ namespace WebAdmin.UserControls.Report
             Session["EmpId"] = txtEmpCode.Text.Trim();
             Session["ShiftID"] = "-1";
             Session["IsClosed"] = ddlIsClosed.SelectedValue.ToString();
-            
+
             //Open New Window
             StringBuilder sb = new StringBuilder();
 

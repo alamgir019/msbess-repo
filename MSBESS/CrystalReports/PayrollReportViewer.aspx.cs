@@ -94,6 +94,22 @@ namespace WebAdmin.CrystalReports
                         CRVT.ReportSource = ReportDoc;
                         break;
                     }
+                case "ITA":
+                    {
+                        ReportPath = Server.MapPath("~/CrystalReports/rptITAssessment.rpt");
+                        ReportDoc.Load(ReportPath);
+                        MyDataTable = rptManager.Get_ITAssessment(Session["FisYear"].ToString(), Session["VMonth"].ToString(), Session["EmpID"].ToString());
+                        ReportDoc.SetDataSource(MyDataTable);
+                        //ReportDoc.SetParameterValue("P_EmpId", MyDataTable.Rows[0]["EmpId"].ToString().Trim());
+                        ReportDoc.SetParameterValue("P_Header", "Income Tax Assessment");
+                        ReportDoc.SetParameterValue("P_FiscalYear", "Income Year :" + Session["FisYearText"].ToString());
+                        ReportDoc.SetParameterValue("P_HouseRentEx", "300000");
+                        ReportDoc.SetParameterValue("P_MedicalEx", "120000");
+                        ReportDoc.SetParameterValue("P_TransportEx", "30000");
+                        ReportDoc.SetParameterValue("ComLogo", LogoPath);
+                        CRVT.ReportSource = ReportDoc;
+                        break;
+                    }
             }
         }
         //protected string CountStatus(string strStatus, DataTable dt)

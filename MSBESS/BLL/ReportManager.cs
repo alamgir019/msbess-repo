@@ -5,6 +5,8 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using WebAdmin.DAL;
+using WebAdmin.App_Data;
+
 namespace WebAdmin.BLL
 {
     public class ReportManager
@@ -210,6 +212,141 @@ namespace WebAdmin.BLL
 
             objDAL.CreateDSFromProc(cmd, "dtAnnualReport");
             return objDAL.ds.Tables["dtAnnualReport"];
+        }
+        #endregion
+
+        #region
+        public DataTable Get_ITAssessment(string FisYear, string VMonth, string EmpID)
+        {
+            SqlCommand cmd = new SqlCommand("PROC_PAYROLL_SELECT_ITAssessment");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter p_Year = cmd.Parameters.Add("TaxFiscalYrId", SqlDbType.BigInt);
+            p_Year.Direction = ParameterDirection.Input;
+            p_Year.Value = Convert.ToInt32(FisYear);
+
+            SqlParameter p_VMonth = cmd.Parameters.Add("VMonth", SqlDbType.Char);
+            p_VMonth.Direction = ParameterDirection.Input;
+            p_VMonth.Value = VMonth;
+
+            SqlParameter p_EmpID = cmd.Parameters.Add("EmpID", SqlDbType.Char);
+            p_EmpID.Direction = ParameterDirection.Input;
+            p_EmpID.Value = EmpID;
+
+            objDAL.CreateDSFromProc(cmd, "dtITAssessment");
+            DataTable dtITAssessment = new DataTable();
+            dtITAssessment = objDAL.ds.Tables["dtITAssessment"];
+
+            dsReports objdsPay = new dsReports();
+            string sEmpId = "";
+            DataRow FinalRow;
+            if (dtITAssessment.Rows.Count > 0)
+            {
+                foreach (DataRow dRow in dtITAssessment.Rows)
+                {
+                    FinalRow = objdsPay.dtITComputation.NewRow();
+
+                    if (dRow["EmpId"].ToString().Trim() != sEmpId)
+                    {
+                        FinalRow["AssYear"] = dRow["AssYear"].ToString();
+                        FinalRow["EmpId"] = dRow["EmpId"].ToString();
+                        sEmpId = dRow["EmpId"].ToString().Trim();
+                        FinalRow["FullName"] = dRow["FullName"].ToString();
+                        FinalRow["SalLocName"] = dRow["SalLocName"].ToString();
+                        FinalRow["BasicSalary"] = dRow["BasicSalary"].ToString();
+                        FinalRow["YBasicSalary"] = Common.ReturnZeroForNull(dRow["YBasicSalary"].ToString());
+                        FinalRow["YHouseRent"] = Common.ReturnZeroForNull(dRow["YHouseRent"].ToString());
+                        FinalRow["YMedicalAllowance"] = Common.ReturnZeroForNull(dRow["YMedicalAllowance"].ToString());
+                        FinalRow["YTransportAllowance"] = Common.ReturnZeroForNull(dRow["YTransportAllowance"].ToString());
+                        FinalRow["YFestivalBonus"] = Common.ReturnZeroForNull(dRow["YFestivalBonus"].ToString());
+                        FinalRow["YPFDeduction"] = Common.ReturnZeroForNull(dRow["YPFDeduction"].ToString());
+                        FinalRow["YOverTime"] = Common.ReturnZeroForNull(dRow["YOverTime"].ToString());
+                        FinalRow["NetTax"] = Common.ReturnZeroForNull(dRow["NetTax"].ToString());
+                        FinalRow["TTI_2"] = Common.ReturnZeroForNull(dRow["TTI_2"].ToString());
+                        #region Tax Liability
+                        decimal dclRemainTaxLiable = 0;
+                        if (Convert.ToDecimal(Common.ReturnZeroForNull(dRow["TTI_2"].ToString())) > 250000)
+                        {
+                            FinalRow["TaxLiableP0"] = "250000";
+                            dclRemainTaxLiable = Convert.ToDecimal(Common.ReturnZeroForNull(dRow["TTI_2"].ToString())) - 250000;
+                        }
+                        else
+                        {
+                            FinalRow["TaxLiableP0"] = dclRemainTaxLiable;
+                            dclRemainTaxLiable = 0;
+                        }
+
+                        if (dclRemainTaxLiable > 400000)
+                        {
+                            FinalRow["TaxLiableP10"] = "400000";
+                            dclRemainTaxLiable = dclRemainTaxLiable - 400000;
+                        }
+                        else
+                        {
+                            FinalRow["TaxLiableP10"] = dclRemainTaxLiable;
+                            dclRemainTaxLiable = 0;
+                        }
+
+                        if (dclRemainTaxLiable > 500000)
+                        {
+                            FinalRow["TaxLiableP15"] = "500000";
+                            dclRemainTaxLiable = dclRemainTaxLiable - 500000;
+                        }
+                        else
+                        {
+                            FinalRow["TaxLiableP15"] = dclRemainTaxLiable;
+                            dclRemainTaxLiable = 0;
+                        }
+
+                        if (dclRemainTaxLiable > 600000)
+                        {
+                            FinalRow["TaxLiableP20"] = "600000";
+                            dclRemainTaxLiable = dclRemainTaxLiable - 600000;
+                        }
+                        else
+                        {
+                            FinalRow["TaxLiableP20"] = dclRemainTaxLiable;
+                            dclRemainTaxLiable = 0;
+                        }
+
+                        if (dclRemainTaxLiable > 3000000)
+                        {
+                            FinalRow["TaxLiableP25"] = "3000000";
+                            dclRemainTaxLiable = dclRemainTaxLiable - 3000000;
+                        }
+                        else
+                        {
+                            FinalRow["TaxLiableP25"] = dclRemainTaxLiable;
+                            dclRemainTaxLiable = 0;
+                        }
+
+                        if (dclRemainTaxLiable > 3000000)
+                        {
+                            FinalRow["TaxLiableP30"] = "3000000";
+                            dclRemainTaxLiable = dclRemainTaxLiable - 3000000;
+                        }
+                        else
+                        {
+                            FinalRow["TaxLiableP30"] = dclRemainTaxLiable;
+                            dclRemainTaxLiable = 0;
+                        }
+                        #endregion
+                        FinalRow["P10"] = Common.ReturnZeroForNull(dRow["P10"].ToString());
+                        FinalRow["P15"] = Common.ReturnZeroForNull(dRow["P15"].ToString());
+                        FinalRow["P20"] = Common.ReturnZeroForNull(dRow["P20"].ToString());
+                        FinalRow["P25"] = Common.ReturnZeroForNull(dRow["P25"].ToString());
+                        FinalRow["P30"] = Common.ReturnZeroForNull(dRow["P30"].ToString());
+                        FinalRow["G_Tax"] = Common.ReturnZeroForNull(dRow["G_Tax"].ToString());
+                        FinalRow["Rebate"] = Common.ReturnZeroForNull(dRow["Rebate"].ToString());// ((((Convert.ToDecimal(FinalRow["TTI_2"]) * 30) / 100) * 15) / 100);
+                        FinalRow["MonthlyTax"] = Common.ReturnZeroForNull(dRow["MonthlyTax"].ToString());
+                        FinalRow["ITDeposited"] = Common.ReturnZeroForNull(dRow["ITDeposited"].ToString());
+                        FinalRow["VMonthNo"] = Common.ReturnZeroForNull(dRow["VMonthNo"].ToString());
+                        objdsPay.dtITComputation.Rows.Add(FinalRow);
+                        objdsPay.dtITComputation.AcceptChanges();
+                    }
+                }
+            }
+            return objdsPay.dtITComputation;
         }
         #endregion
     }
