@@ -90,7 +90,7 @@ namespace WebAdmin.CrystalReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pSBU {
+        public CrystalDecisions.Shared.IParameterField Parameter_pDIV {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace WebAdmin.CrystalReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pDIV {
+        public CrystalDecisions.Shared.IParameterField Parameter_pSBU {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }

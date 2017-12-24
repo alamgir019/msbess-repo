@@ -85,10 +85,10 @@ namespace WebAdmin.CrystalReports
                         
                         ReportDoc.SetDataSource(MyDataTable);
                         ReportDoc.SetParameterValue("pDIV", Session["DivisionId"].ToString());
-                        ReportDoc.SetParameterValue("pSBU", Session["SbuId"].ToString());
+                        ReportDoc.SetParameterValue("pSBU",Session["SbuId"].ToString());
                         ReportDoc.SetParameterValue("pDEP", Session["DeptId"].ToString().Trim());
-                        ReportDoc.SetParameterValue("FromDate", Session["FromDate"].ToString());
-                        ReportDoc.SetParameterValue("ToDate", Session["ToDate"].ToString());
+                        ReportDoc.SetParameterValue("FromDate",Session["FromDate"].ToString());
+                        ReportDoc.SetParameterValue("ToDate",Session["ToDate"].ToString());
                         ReportDoc.SetParameterValue("pHeader", "Attendance Report");
                         ReportDoc.SetParameterValue("ComLogo", LogoPath);
                         CRVT.ReportSource = ReportDoc;
@@ -103,10 +103,18 @@ namespace WebAdmin.CrystalReports
                         //ReportDoc.SetParameterValue("P_EmpId", MyDataTable.Rows[0]["EmpId"].ToString().Trim());
                         ReportDoc.SetParameterValue("P_Header", "Income Tax Assessment");
                         ReportDoc.SetParameterValue("P_FiscalYear", "Income Year :" + Session["FisYearText"].ToString());
-                        ReportDoc.SetParameterValue("P_HouseRentEx", "300000");
-                        ReportDoc.SetParameterValue("P_MedicalEx", "120000");
-                        ReportDoc.SetParameterValue("P_TransportEx", "30000");
+                        ReportDoc.SetParameterValue("P_HouseRentEx", 300000);
+                        ReportDoc.SetParameterValue("P_MedicalEx", 120000);
+                        ReportDoc.SetParameterValue("P_TransportEx", 30000);
                         ReportDoc.SetParameterValue("ComLogo", LogoPath);
+                        CRVT.ReportSource = ReportDoc;
+                        break;
+                    }
+                case "test":
+                    {
+                        ReportPath = Server.MapPath("~/CrystalReports/CrystalReport1.rpt");
+                        ReportDoc.Load(ReportPath);
+                        ReportDoc.SetParameterValue("P_Header", "Income Tax Assessment");
                         CRVT.ReportSource = ReportDoc;
                         break;
                     }

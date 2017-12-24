@@ -469,6 +469,7 @@
                                 <li><a href="../CrystalReports/ReportViewer.aspx?rep=PF"><i class="fa fa-file-text-o"></i>Yearly PF Balance</a></li>
                                 <li><a href="../CrystalReports/ReportViewer.aspx?rep=ATD"><i class="fa fa-file-text-o"></i>Attendance Report</a></li>
                                 <li><a href="../CrystalReports/ReportViewer.aspx?rep=ITA"><i class="fa fa-file-text-o"></i>Income Tax Assessment</a></li>
+                                <li><a href="../CrystalReports/ReportViewer.aspx?rep=test"><i class="fa fa-file-text-o"></i>Test report</a></li>
                             </ul>
                         </li>
                     </ul>
