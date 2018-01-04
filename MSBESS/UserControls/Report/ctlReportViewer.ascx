@@ -927,7 +927,7 @@
                     </table>                          
                     <div style="padding-right: 15px; float: left;">
                         <asp:Panel ID="PShow" runat="server" Visible="False">
-                            <asp:Button ID="btnShow" runat="server" Text="Show Report" OnClick="btnShow_Click" Font-Underline="False"></asp:Button>
+                            <asp:Button ID="btnShow" runat="server" Text="Show Report" class="btn btn-primary col-md-12 btn-custom" OnClick="btnShow_Click" Font-Underline="False"></asp:Button>
                         </asp:Panel>
                     </div>
                 </ContentTemplate>

@@ -116,8 +116,6 @@ namespace WebAdmin
                     imgUserAccountDown.ImageUrl = "~/Content/images/NoImageSmall.jpg";
                     //imgUserAccount.ImageUrl = "~/Content/images/NoImageSmall.jpg";
                 }
-
-
                 lblFullName.InnerText = HttpContext.Current.Session["USERNAME"].ToString();
                 lblDesig.InnerText = HttpContext.Current.Session["DESIGNATION"].ToString();
                 lblJoinDate.InnerText = "Employee Since " + HttpContext.Current.Session["JOINDATE"].ToString();

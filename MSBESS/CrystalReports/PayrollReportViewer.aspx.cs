@@ -20,7 +20,7 @@ namespace WebAdmin.CrystalReports
         ReportManager rptManager = new ReportManager();
         CashInWord InWord = new CashInWord();
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             ConfigureCrystalReports();
         }

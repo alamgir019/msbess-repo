@@ -25,7 +25,9 @@ namespace WebAdmin.UserControls.EIS
             MyTree.Nodes.Clear();
             MyTree.Dispose();
             filePath = System.Web.Configuration.WebConfigurationManager.AppSettings["EmpFilePath"];
+            //filePath = "D:\\BASESOFT\\MSBHR\\Documents\\PolicyFiles\\";
             System.IO.DirectoryInfo RootDir = new System.IO.DirectoryInfo(Server.MapPath(filePath));
+            //System.IO.DirectoryInfo RootDir = new System.IO.DirectoryInfo(filePath);
             TreeNode RootNode = OutputDirectory(RootDir, null);
             MyTree.Nodes.Add(RootNode);
             MyTree.ExpandDepth = 1;

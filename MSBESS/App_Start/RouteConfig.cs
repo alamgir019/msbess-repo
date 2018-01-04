@@ -13,6 +13,7 @@ namespace WebAdmin
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
+            routes.Ignore("{*allaspx}", new { allaspx = @".*(CrystalImageHandler).*" });
         }
     }
 }
