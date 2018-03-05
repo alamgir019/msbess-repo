@@ -47,23 +47,27 @@ namespace WebAdmin.UserControls.EIS
             string extn = "";
             string fullPath = "";
             string fileName = "";
-            if (fluTin.HasFile && fluNid.HasFile && fluDriveLic.HasFile && fluBmdc.HasFile)
+            if (fluNid.HasFile)
             {
                 try
                 {
+                    // &&  &&  && 
                     string[] extns = { ".pdf",".png",".jpg",".jpeg"};
                     //tin upload
-                    fullPath = filePath+"TIN/"+ hfID.Value + "/";
-                    fileName = Path.GetFileName(fluTin.FileName);
-                    extn = Path.GetExtension(fileName);
-                    if (extns.Contains(extn.ToLower()))
+                    if (fluTin.HasFile)
                     {
+                        fullPath = filePath + "TIN/" + hfID.Value + "/";
+                        fileName = Path.GetFileName(fluTin.FileName);
+                        extn = Path.GetExtension(fileName);
+                        if (extns.Contains(extn.ToLower()))
+                        {
 
-                        bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
+                            bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
 
-                        if (!exists)
-                            System.IO.Directory.CreateDirectory(Server.MapPath(fullPath));
-                        fluTin.SaveAs(Server.MapPath(fullPath) + fileName);
+                            if (!exists)
+                                System.IO.Directory.CreateDirectory(Server.MapPath(fullPath));
+                            fluTin.SaveAs(Server.MapPath(fullPath) + fileName);
+                        }
                     }
                     //nid upload
                     fullPath = filePath+"NID/"+ hfID.Value + @"/";
@@ -79,28 +83,34 @@ namespace WebAdmin.UserControls.EIS
                         fluNid.SaveAs(Server.MapPath(fullPath) + fileName);
                     }
                     //driving licence upload
-                    fullPath = filePath+"DrivLic/"+ hfID.Value + @"/";
-                    fileName = Path.GetFileName(fluDriveLic.FileName);
-                    extn = Path.GetExtension(fileName);
-                    if (extns.Contains(extn.ToLower()))
+                    if (fluDriveLic.HasFile)
                     {
+                        fullPath = filePath + "DrivLic/" + hfID.Value + @"/";
+                        fileName = Path.GetFileName(fluDriveLic.FileName);
+                        extn = Path.GetExtension(fileName);
+                        if (extns.Contains(extn.ToLower()))
+                        {
 
-                        bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
+                            bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
 
-                        if (!exists)
-                            System.IO.Directory.CreateDirectory(Server.MapPath(fullPath));
-                        fluDriveLic.SaveAs(Server.MapPath(fullPath) + fileName);
+                            if (!exists)
+                                System.IO.Directory.CreateDirectory(Server.MapPath(fullPath));
+                            fluDriveLic.SaveAs(Server.MapPath(fullPath) + fileName);
+                        }
                     }
                     //bmdc upload
-                    fullPath = filePath+"BMDC/" + hfID.Value + @"/";
-                    fileName = Path.GetFileName(fluBmdc.FileName);
-                    extn = Path.GetExtension(fileName);
-                    if (extns.Contains(extn.ToLower()))
+                    if (fluBmdc.HasFile)
                     {
-                        bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
-                        if (!exists)
-                            System.IO.Directory.CreateDirectory(Server.MapPath(fullPath));
-                        fluBmdc.SaveAs(Server.MapPath(fullPath) + fileName);
+                        fullPath = filePath + "BMDC/" + hfID.Value + @"/";
+                        fileName = Path.GetFileName(fluBmdc.FileName);
+                        extn = Path.GetExtension(fileName);
+                        if (extns.Contains(extn.ToLower()))
+                        {
+                            bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
+                            if (!exists)
+                                System.IO.Directory.CreateDirectory(Server.MapPath(fullPath));
+                            fluBmdc.SaveAs(Server.MapPath(fullPath) + fileName);
+                        }
                     }
                     SiteMaster.ShowClientMessage(Page, "File uploaded successfully!", "success");
                 }

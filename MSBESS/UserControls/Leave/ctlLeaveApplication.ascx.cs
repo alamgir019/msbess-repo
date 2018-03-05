@@ -916,7 +916,7 @@ namespace WebAdmin.UserControls.Leave
                 if (dtLvPeriod.Rows.Count > 0)
                 {   
                 //lblMsg.Text = "test1rtrt:"+dtLvPeriod.Rows.Count;
-                    SiteMaster.ShowClientMessage(Page, "Please Renew Leave Period of " + txtEmpID.Text.Trim() + " ID's Leave Package !", "error");
+                    SiteMaster.ShowClientMessage(Page, "Please Renew Leave Period of " + txtEmpID.Text.Trim() + " Leave Package !", "error");
                     return false;
                 }
                

@@ -17,7 +17,9 @@ namespace WebAdmin.UserControls.Attendance
             if (!IsPostBack)
             {
                 Common.FillMonthList(ddlMonth);
+                ddlMonth.SelectedValue = DateTime.Now.Month.ToString();
                 Common.FillYearList(5, ddlYear);
+                ddlYear.SelectedValue = DateTime.Now.Year.ToString();
             }
         }
 
@@ -32,6 +34,24 @@ namespace WebAdmin.UserControls.Attendance
             //{
             //    gRow.Cells[4].Text = Common.ReturnDateTimeInString(gRow.Cells[4].Text,false,Constant.strDateFormat);
             //}
+        }
+
+        protected void grAttnAdj_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                System.Data.DataRow row = ((System.Data.DataRowView)e.Row.DataItem).Row;
+                if (row["Status"].ToString().Trim() == "A")
+                    e.Row.BackColor = System.Drawing.Color.Red;
+                else if (row["Status"].ToString().Trim() == "P")
+                    e.Row.BackColor = System.Drawing.Color.Green;
+                else if (row["Status"].ToString().Trim() == "W")
+                    e.Row.BackColor = System.Drawing.Color.Blue;
+                else if (row["Status"].ToString().Trim() == "LT")
+                    e.Row.BackColor = System.Drawing.Color.Yellow;
+                else if (row["Status"].ToString().Trim() == "X")
+                    e.Row.BackColor = System.Drawing.Color.Pink;
+            }
         }
     }
 }

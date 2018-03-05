@@ -28,8 +28,8 @@
                                                 <label for="fluTin" class="col-sm-4 control-label">TIN Certificate</label>
                                                 <div class="col-sm-8">
                                                     <asp:FileUpload ID="fluTin" class="form-control" Height="100%" runat="server" /> 
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fluTin"
-                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                   <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fluTin"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -52,8 +52,8 @@
                                                 <label for="fluDriveLic" class="col-sm-4 control-label">Driving License</label>
                                                 <div class="col-sm-8">
                                                     <asp:FileUpload ID="fluDriveLic" runat="server" class="form-control" Height="100%" /> 
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="fluDriveLic"
-                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="fluDriveLic"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,8 +64,8 @@
                                                 <label for="fluBmdc" class="col-sm-4 control-label">BMDC Certificate</label>
                                                 <div class="col-sm-8">
                                                     <asp:FileUpload ID="fluBmdc" runat="server" class="form-control" Height="100%" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="fluBmdc"
-                                                            ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="fluBmdc"
+                                                            ErrorMessage="*"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                             </div>
                                         </div>

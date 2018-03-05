@@ -11,9 +11,8 @@ namespace WebAdmin
         public static void RegisterRoutes(RouteCollection routes)
         {
             var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Permanent;
+            //settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
-            routes.Ignore("{*allaspx}", new { allaspx = @".*(CrystalImageHandler).*" });
         }
     }
 }

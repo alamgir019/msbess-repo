@@ -271,7 +271,7 @@
                                 <li><a href="../Pages/EmpFileUpload.aspx"><i class="fa fa-file-o"></i>Document Management</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                       <%-- <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-file-text"></i>
                                 <span>Reports</span>
@@ -280,13 +280,13 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <%--<li><a href="../CrystalReports/ReportViewer.aspx?rep=PS"><i class="fa fa-file-text-o"></i>Pay Slip</a></li>
+                                <li><a href="../CrystalReports/ReportViewer.aspx?rep=PS"><i class="fa fa-file-text-o"></i>Pay Slip</a></li>
                                 <li><a href="../CrystalReports/ReportViewer.aspx?rep=PF"><i class="fa fa-file-text-o"></i>Yearly PF Balance</a></li>
                                 <li><a href="../CrystalReports/ReportViewer.aspx?rep=ATD"><i class="fa fa-file-text-o"></i>Attendance Report</a></li>
-                                <li><a href="../CrystalReports/ReportViewer.aspx?rep=ITA"><i class="fa fa-file-text-o"></i>Income Tax Assessment</a></li>--%>
+                                <li><a href="../CrystalReports/ReportViewer.aspx?rep=ITA"><i class="fa fa-file-text-o"></i>Income Tax Assessment</a></li>
                                 <li><a href="../CrystalReports/ReportViewer.aspx?rep=test"><i class="fa fa-file-text-o"></i>Test report</a></li>
                             </ul>
-                        </li>
+                        </li>--%>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
