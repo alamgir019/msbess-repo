@@ -174,7 +174,7 @@ namespace WebAdmin
         }
         private void CheckAwayDeskLog()
         {
-            DataTable dtLog = objAM.getDeskAwayLog(Session["EMPID"].ToString().Trim());
+            DataTable dtLog = objAM.getDeskAwayLog(Session["EMPID"].ToString().Trim(),"","");
             if (dtLog.Rows.Count > 0)
             {        
                 string cmdType;

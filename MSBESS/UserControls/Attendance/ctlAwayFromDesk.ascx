@@ -23,43 +23,29 @@
                         <asp:Button runat="server" ID="btnClose" Text="Close" CssClass="btn btn-danger" OnClick="btnClose_Click"  CausesValidation="false" />
                     </div>
                     
-                    <div class="box-body table-responsive no-padding">dfgdfgdfgdgd
-                        <asp:GridView ID="grAttnAdj" runat="server" Width="100%" Font-Size="9px" EmptyDataText="No Record Found"
-                            AutoGenerateColumns="False" DataKeyNames="SL" class="table table-bordered table-hover" PageSize="10">
+                    <div class="box-body table-responsive no-padding">
+                        <asp:GridView ID="grDeskAway" runat="server" Width="100%" Font-Size="9px" EmptyDataText="No Record Found"
+                            AutoGenerateColumns="False" DataKeyNames="EmpId" class="table table-bordered table-hover" PageSize="10">
                             <HeaderStyle BackColor="#B3CDE4" Font-Bold="True" Font-Size="Small"></HeaderStyle>
                             <SelectedRowStyle BackColor="#D1DDF1" ForeColor="#333333" Font-Bold="True" Font-Size="Small"></SelectedRowStyle>
-                            <%--<AlternatingRowStyle BackColor="#EFF3FB" Font-Size="Small"></AlternatingRowStyle>--%>
+                            <AlternatingRowStyle BackColor="#EFF3FB" Font-Size="Small"></AlternatingRowStyle>
                             <RowStyle Font-Size="Small" />
                             <Columns>
-
                                 <asp:BoundField DataField="EmpId" HeaderText="Emp.No">
                                     <ItemStyle CssClass="ItemStylecss" Width="5%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="FullName" HeaderText="Employee Name">
-                                    <ItemStyle CssClass="ItemStylecss" Width="16%" />
+                                <asp:BoundField DataField="LogDate" HeaderText="Log Date">
+                                    <ItemStyle CssClass="ItemStylecss" Width="20%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="DesigName" HeaderText="Designation">
+                                <asp:BoundField DataField="OutTime" HeaderText="OutTime">
                                     <ItemStyle CssClass="ItemStylecss" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="DeptName" HeaderText="Department">
+                                <asp:BoundField DataField="InTime" HeaderText="InTime">
                                     <ItemStyle CssClass="ItemStylecss" Width="14%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AttndDate" HeaderText="Attn. Date">
-                                    <ItemStyle CssClass="ItemStylecss" Width="7%" />
+                                <asp:BoundField DataField="Reason" HeaderText="AttnReason">
+                                    <ItemStyle CssClass="ItemStylecss" Width="20%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="SignInTime" HeaderText="In Time">
-                                    <ItemStyle CssClass="ItemStylecss" Width="8%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="SignOutTime" HeaderText="Out Time">
-                                    <ItemStyle CssClass="ItemStylecss" Width="8%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Status" HeaderText="Status">
-                                    <ItemStyle CssClass="ItemStylecss" Width="6%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                    <ItemStyle CssClass="ItemStylecss" Width="7%" />
-                                </asp:BoundField>
-
                             </Columns>
                         </asp:GridView>
                     </div>

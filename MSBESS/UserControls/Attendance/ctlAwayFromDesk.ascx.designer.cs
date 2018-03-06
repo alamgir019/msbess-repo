@@ -76,12 +76,12 @@ namespace WebAdmin.UserControls.Attendance {
         protected global::System.Web.UI.WebControls.Button btnClose;
         
         /// <summary>
-        /// grAttnAdj control.
+        /// grDeskAway control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grAttnAdj;
+        protected global::System.Web.UI.WebControls.GridView grDeskAway;
     }
 }

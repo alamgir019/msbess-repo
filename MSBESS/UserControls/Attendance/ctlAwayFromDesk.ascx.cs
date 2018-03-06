@@ -23,12 +23,11 @@ namespace WebAdmin.UserControls.Attendance
             {
                 this.OpenRecord();
             }
-
         }
         private void OpenRecord()
         {
             lblDateTime.Text = "Now Date: " + DateTime.Now.ToShortDateString() + "     Time: " + DateTime.Now.ToShortTimeString();
-            DataTable dtLog = objAM.getDeskAwayLog(Session["EMPID"].ToString().Trim());
+            DataTable dtLog = objAM.getDeskAwayLog(Session["EMPID"].ToString().Trim(),"","");
             if (dtLog.Rows.Count > 0)
             {
                 hdfSINO.Value = dtLog.Rows[0]["SLNO"].ToString().Trim();
@@ -42,6 +41,9 @@ namespace WebAdmin.UserControls.Attendance
                 txtReason.Text = "";
                 btnSave.Text = "Save Desk OutTime";
             }
+            DataTable dtAwayUsers = objAM.getDeskAwayLog("", "intime", DateTime.Now.ToShortDateString());
+            grDeskAway.DataSource = dtAwayUsers;
+            grDeskAway.DataBind();
             ScriptManager.RegisterClientScriptBlock(Page, typeof(string), Guid.NewGuid().ToString(), "$('#myModal').modal('show');", true);
         }
         protected void btnSave_Click(object sender, EventArgs e)
