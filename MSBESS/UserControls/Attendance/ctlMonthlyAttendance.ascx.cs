@@ -46,7 +46,7 @@ namespace WebAdmin.UserControls.Attendance
                 else if (row["Status"].ToString().Trim() == "P")
                     e.Row.BackColor = System.Drawing.Color.Green;
                 else if (row["Status"].ToString().Trim() == "W")
-                    e.Row.BackColor = System.Drawing.Color.Blue;
+                    e.Row.BackColor = System.Drawing.Color.LightYellow;
                 else if (row["Status"].ToString().Trim() == "LT")
                     e.Row.BackColor = System.Drawing.Color.Yellow;
                 else if (row["Status"].ToString().Trim() == "X")

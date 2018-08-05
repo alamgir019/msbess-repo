@@ -43,11 +43,11 @@ namespace WebAdmin.BLL
             //Enablessl = ConfigurationManager.AppSettings["Enssl"];
 
             //for client pc
-            MailServer = "msmtp.mariestopesbd.org";
-            MailPort = 25;
+            MailServer = "mail.mariestopesbd.org";
+            MailPort = 465;
             SystemEmail = "hris@msmtp.mariestopesbd.org";
-            SystemEmailUserName = "hris@msmtp.mariestopesbd.org";
-            SystemEmailPwd = "mscs@2017";
+            SystemEmailUserName = "hris";
+            SystemEmailPwd = "hri$9876";
             Enablessl = "false";
 
             //for developer pc
@@ -168,7 +168,7 @@ namespace WebAdmin.BLL
                     SmtpClient MySmtpClient = new SmtpClient(MailServer);//"smtp.gmail.com");
                     MySmtpClient.Port = MailPort;
                     MySmtpClient.EnableSsl = Convert.ToBoolean(Enablessl);
-                    MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmail, SystemEmailPwd); //"alamgir.bfew@gmail.com", "01924199116");
+                    MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmailUserName, SystemEmailPwd); //"alamgir.bfew@gmail.com", "01924199116");
 
                     MySmtpClient.Send(objMsg);
                     strErrText = "Mail has been sent to recommendar";
