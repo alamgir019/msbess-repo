@@ -40,7 +40,12 @@ namespace WebAdmin.BLL
                 p_LogDate.Direction = ParameterDirection.Input;
                 p_LogDate.Value = logDate;
             }
-                objDAL.CreateDT(command, "EmpAwayLog");
+            if (objDAL.ds.Tables.Contains("EmpAwayLog"))
+            {
+                objDAL.ds.Tables.Remove(objDAL.ds.Tables["EmpAwayLog"]);
+            }
+            
+            objDAL.CreateDT(command, "EmpAwayLog");
             return objDAL.ds.Tables["EmpAwayLog"];
         }
     }

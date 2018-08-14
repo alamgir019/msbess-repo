@@ -514,6 +514,10 @@
     <Content Include="Content\plugins\sparkline\jquery.sparkline.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\images\MSB-Logo.jpg" />
+    <Content Include="CrystalReports\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </Content>
     <Content Include="CrystalReports\PayrollReportViewer.aspx" />
     <Content Include="Pages\AwayFromDesk.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
@@ -689,11 +693,10 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="CrystalReports\CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="CrystalReports\PayrollReportViewer.aspx.cs">
       <DependentUpon>PayrollReportViewer.aspx</DependentUpon>
@@ -1142,11 +1145,6 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CrystalReports\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CrystalReports\rptAttandance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAttandance.cs</LastGenOutput>

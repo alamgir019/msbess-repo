@@ -1053,7 +1053,6 @@ namespace WebAdmin.UserControls.Leave
             string message = "";
             MailManagerSmtpClient objMail = new MailManagerSmtpClient();
             #region mail sending
-
             DateTime LvStDate = Convert.ToDateTime(dtpLeaveStart.Text);
             DateTime LvEnDate = new DateTime();
             if (dtpLeaveEnd.Text != "")

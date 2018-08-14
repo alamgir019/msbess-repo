@@ -381,7 +381,7 @@ namespace WebAdmin.UserControls.Leave
             else
             {
                 txtApproveByName.Text = dtApproval.Rows[0]["FullName"].ToString().Trim();
-                hdfSpervisorEmail.Value = dtApproval.Rows[0]["supervisorEmail"].ToString().Trim();
+                hdfSpervisorEmail.Value = dtApproval.Rows[0]["OfficeEmail"].ToString().Trim();
             }
         }
         protected void btnRecommend_Click(object sender, EventArgs e)
@@ -412,7 +412,7 @@ namespace WebAdmin.UserControls.Leave
                  SiteMaster.ShowClientMessage(Page, "Leave has been Recommended Successfully.", "success");
                 this.SendMail(dtLeaveApp.Rows[0]["EmpId"].ToString().Trim(), dtLeaveApp.Rows[0]["LvAppID"].ToString().Trim()
                     , personTable.Rows[0]["LeaveStart"].ToString().Trim(), personTable.Rows[0]["LeaveEnd"].ToString().Trim(), txtApproveBy.Text.Trim()
-                    , dtApproval.Rows[0]["SupervisorId"].ToString().Trim());
+                    , Session["EMPID"].ToString().Trim());
                 ScriptManager.RegisterClientScriptBlock(Page, typeof(string), Guid.NewGuid().ToString(), "CloseWindow(3200);", true);
             }
             else
@@ -445,6 +445,7 @@ namespace WebAdmin.UserControls.Leave
 
                 //Open this part for mail  
                 //lblMsg.Text = "Level4";
+                //hdfSpervisorEmail.Value = "alamgir@baseltd.com";
                 message = objMail.RequestFromRecommendar(empId, leaveAppId,
                     Common.SetDate(LvStDate.ToShortDateString()), Common.SetDate(LvEnDate.ToShortDateString()),
                     Session["EMPID"].ToString(), Session["USERNAME"].ToString(),

@@ -17,13 +17,14 @@ namespace WebAdmin.UserControls.EIS
         {
             if (!Page.IsPostBack)
             {
-                if (Session["ISADMIN"].ToString().Trim() == "N")
-                {
-                    hfID.Value = Session["EMPID"].ToString().Trim();
-                }
+                //if (Session["ISADMIN"].ToString().Trim() == "N")
+                //{
+                hfID.Value = Session["EMPID"].ToString().Trim();
+                //}
                 this.LoadDirectory();
             }
         }
+
         protected void LoadDirectory()
         {
             MyTree.Nodes.Clear();
@@ -35,6 +36,7 @@ namespace WebAdmin.UserControls.EIS
             MyTree.ExpandDepth = 1;
             
         }
+
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
 
@@ -61,7 +63,6 @@ namespace WebAdmin.UserControls.EIS
                         extn = Path.GetExtension(fileName);
                         if (extns.Contains(extn.ToLower()))
                         {
-
                             bool exists = System.IO.Directory.Exists(Server.MapPath(fullPath));
 
                             if (!exists)
@@ -121,7 +122,7 @@ namespace WebAdmin.UserControls.EIS
             }
             //TabContainer1.ActiveTabIndex = 0;
         }
-                   
+        
         TreeNode OutputDirectory(System.IO.DirectoryInfo directory, TreeNode parentNode,int depth)
         {
             depth++;
@@ -164,9 +165,7 @@ namespace WebAdmin.UserControls.EIS
                 return parentNode;
             }
         }
-
-
-
+        
         protected void MyTree_SelectedNodeChanged(object sender, EventArgs e)
         {
             TreeNode node = this.MyTree.SelectedNode;
@@ -205,8 +204,7 @@ namespace WebAdmin.UserControls.EIS
             }
 
         }
-
-
+        
         private void ReadPdfFile(string pdfFile)
         {
             Session["FILEPATH"] = "";
@@ -227,11 +225,13 @@ namespace WebAdmin.UserControls.EIS
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit", sb.ToString(),false);
 
         }
+
         private void InsertViewLogInfo(string FileName)
         {
             //string ViewID = Common.getMaxId("MSBPageViewDtls", "ViewID");
             //tblObj.InsertViewLogInfo(ViewID, Session["USERID"].ToString(), FileName, Common.SetDateTime(DateTime.Now.ToString()));
         }
+
         protected void btnClose_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/Default.aspx");

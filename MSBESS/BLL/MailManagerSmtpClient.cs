@@ -47,7 +47,7 @@ namespace WebAdmin.BLL
             MailPort = 465;
             SystemEmail = "hris@msmtp.mariestopesbd.org";
             SystemEmailUserName = "hris";
-            SystemEmailPwd = "hri$9876";
+            SystemEmailPwd = "8847M443m3";
             Enablessl = "false";
 
             //for developer pc
@@ -110,11 +110,7 @@ namespace WebAdmin.BLL
             strToAddr = strSpvEmail;
             DataTable dtLeaveApp = new DataTable();
 
-            //strLvAppID = "11";
-            //strEmpID = "E003591";
-            //strLvPackStartDate = "2017-05-01";
-            //strLvPackEndDate = "2017-05-02";
-            //strToEmpId = "E005276";
+           
             dtLeaveApp = objLeaveMgr.SelectRequestLeaveAppMst(Convert.ToInt32(strLvAppID), strEmpID, "P", strLvPackStartDate, strLvPackEndDate, strToEmpId);
 
             // Get COPY TO EMAIL Address
@@ -244,7 +240,6 @@ namespace WebAdmin.BLL
 
             // Get COPY TO EMAIL Address
             string strCopyToName = "";
-            string strCopyAddr = "";
 
 
             if (dtLeaveApp.Rows.Count > 0)
@@ -286,14 +281,13 @@ namespace WebAdmin.BLL
             {
                 if (strFromAddr != "" && strToAddr != "")
                 {
-                    //strFromAddr = "alamgir.bfew@gmail.com";
-                    //strToAddr= "alamgir.bfew@gmail.com";
                     MailMessage objMsg = new MailMessage(strFromAddr, strToAddr, strSubject, strBody);
                     //objMsg.IsBodyHtml = true;
                     SmtpClient MySmtpClient = new SmtpClient(MailServer);//"smtp.gmail.com");
                     MySmtpClient.Port = MailPort;
                     MySmtpClient.EnableSsl = Convert.ToBoolean(Enablessl);
-                    MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmail, SystemEmailPwd); //"alamgir.bfew@gmail.com", "01924199116");
+                    MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmailUserName, SystemEmailPwd); //"alamgir.bfew@gmail.com", "01924199116");
+                    //strErrText = "from:"+strFromAddr+" to:"+strToAddr+" subject:"+ strSubject;
 
                     MySmtpClient.Send(objMsg);
                     strErrText = "Mail has been sent to supervisor";
