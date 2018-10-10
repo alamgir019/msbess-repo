@@ -119,7 +119,7 @@ namespace WebAdmin
                 lblFullName.InnerText = HttpContext.Current.Session["USERNAME"].ToString();
                 lblDesig.InnerText = HttpContext.Current.Session["DESIGNATION"].ToString();
                 lblJoinDate.InnerText = "Employee Since " + HttpContext.Current.Session["JOINDATE"].ToString();
-                Session["USERID"] = "Admin";
+                //Session["USERID"] = "Admin";
                 Session["FISCALYRID"] = "1";
 
                 // For leave menu item check

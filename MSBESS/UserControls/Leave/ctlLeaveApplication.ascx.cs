@@ -771,7 +771,7 @@ namespace WebAdmin.UserControls.Leave
             DataTable dtLType = objLeave.SelectLeaveType(Convert.ToInt32(ddlLTypeId.SelectedValue));
             if (dtLType.Rows.Count > 0)
             {
-                if (Int16.Parse(dtLType.Rows[0]["LeaveTTL"].ToString().Trim()) > 0 && Int16.Parse(dtLType.Rows[0]["LeaveTTL"].ToString().Trim()) < Int16.Parse(txtLDurInDays.Text.Trim()))
+                if (float.Parse(dtLType.Rows[0]["LeaveTTL"].ToString().Trim()) > 0 && float.Parse(dtLType.Rows[0]["LeaveTTL"].ToString().Trim()) < float.Parse(txtLDurInDays.Text.Trim()))
                 {
                     SiteMaster.ShowClientMessage(Page, "Maximum " + dtLType.Rows[0]["LeaveTTL"].ToString().Trim() + " consecutive days allowed.", "error");
                     txtLDurInDays.Text = "";
@@ -840,12 +840,12 @@ namespace WebAdmin.UserControls.Leave
                     SiteMaster.ShowClientMessage(Page, "Please Enter Valid Leave Date From and Date To!", "error");
                     return false;
                 }
-                        //lblMsg.Text = "test text";
-                if (Common.CheckStartEndDate(dtpResumeDate.Text.Trim(), dtpLeaveEnd.Text.Trim()) == false)
-                {
-                    SiteMaster.ShowClientMessage(Page, "Resume Date Cannot Before Than Leave To Date!", "error");
-                    return false;
-                }
+                //lblMsg.Text = "test text";
+                //if (Common.CheckStartEndDate(dtpResumeDate.Text.Trim(), dtpLeaveEnd.Text.Trim()) == false)
+                //{
+                //    SiteMaster.ShowClientMessage(Page, "Resume Date Cannot Before Than Leave To Date!", "error");
+                //    return false;
+                //}
                         //lblMsg.Text = "test9";
                 //Leave Taken Barrier      
                 //DateTime dtLvStart = Common.ReturnDateTime(dtpLeaveStart.Text.Trim(), false, Constant.strDateFormat);

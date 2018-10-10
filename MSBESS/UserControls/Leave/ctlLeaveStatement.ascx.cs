@@ -115,8 +115,8 @@ namespace WebAdmin.UserControls.Leave
                 if (Common.CheckNullString(gRow.Cells[7].Text) != "")
                     gRow.Cells[7].Text = gRow.Cells[7].Text;
 
-                if (string.IsNullOrEmpty(Common.CheckNullString(gRow.Cells[8].Text)) == false)
-                    gRow.Cells[8].Text = Common.DisplayDateTime(gRow.Cells[8].Text.Trim(), false, Constant.strDateFormat);
+                if (string.IsNullOrEmpty(Common.CheckNullString(gRow.Cells[9].Text)) == false)
+                    gRow.Cells[9].Text = Common.DisplayDateTime(gRow.Cells[9].Text.Trim(), false, Constant.strDateFormat);
                 i++;
             }
         }

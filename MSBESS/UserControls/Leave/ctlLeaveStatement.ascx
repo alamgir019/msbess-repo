@@ -135,7 +135,7 @@
                             <AlternatingRowStyle BackColor="#EFF3FB"></AlternatingRowStyle>
                             <Columns>
                                 <asp:BoundField DataField="" HeaderText="SL">
-                                    <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
+                                    <ItemStyle CssClass="ItemStylecss" Width="5%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="LTypeTitle" HeaderText="LEAVE TYPE">
                                     <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
@@ -144,19 +144,22 @@
                                     <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="LeaveStart" HeaderText="LEAVE START">
-                                    <ItemStyle CssClass="ItemStylecss" Width="15%"></ItemStyle>
+                                    <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="LeaveEnd" HeaderText="LEAVE TO">
                                     <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="LDurInDays" HeaderText="DAYS">
-                                    <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
+                                    <ItemStyle CssClass="ItemStylecss" Width="5%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AppStatus" HeaderText="Leave Status">
                                     <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ApprovedBy" HeaderText="APPROVED BY">
                                     <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Approver" HeaderText="APPROVER NAME">
+                                    <ItemStyle CssClass="ItemStylecss" Width="15%"></ItemStyle>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="approveDate" HeaderText="APPROVE ON">
                                     <ItemStyle CssClass="ItemStylecss" Width="10%"></ItemStyle>
