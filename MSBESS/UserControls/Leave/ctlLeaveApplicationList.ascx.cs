@@ -83,13 +83,19 @@ namespace WebAdmin.UserControls.Leave
 
         protected void grLeaveApp_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            MailManagerSmtpClient objMail = new MailManagerSmtpClient();
+            string mailMessage = "";
             GridView _gridView = (GridView)sender;
             // Get the selected index and the command name
             int _selectedIndex = int.Parse(e.CommandArgument.ToString());
             string _commandName = e.CommandName;
             _gridView.SelectedIndex = _selectedIndex;
             string strPreYrLv = "";
-           switch (_commandName)
+            char[] splitter = { ',' };
+            string[] arinfo2 = new string[10];
+            string leaveStart = "";
+            string leaveEnd = "";
+            switch (_commandName)
             {
                 case ("ViewClick"):
                     StringBuilder sb = new StringBuilder();
@@ -113,14 +119,29 @@ namespace WebAdmin.UserControls.Leave
                         grLeaveList.DataKeys[_gridView.SelectedIndex].Values[9].ToString(),
                         Session["USERID"].ToString(), Common.ReturnDateTimeInString(Common.DisplayDateTime(DateTime.Now.ToString(), false, Constant.strDateFormat), false,Constant.strDateFormat), strPreYrLv, grLeaveList.DataKeys[_gridView.SelectedIndex].Values[7].ToString());
 
-                    //        ////Email Notification                
-                    //        //lblMsg.Text = objMail.LeaveApprovalBySupervisor(grLeaveApp.SelectedRow.Cells[1].Text.Trim(), grLeaveApp.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
-                    //        //      Session["EMPID"].ToString(), Session["USERNAME"].ToString(),
-                    //        //      Session["DESIGNATION"].ToString(), Session["LOCATION"].ToString(),
-                    //        //      Session["USERID"].ToString().Trim().ToUpper() == "ADMIN" ? "Y" : "N", Session["EMAILID"].ToString());
-                    //        if (lblMsg.Text == "")
-                    //            lblMsg.Text = "Leave has been approved successfully";
-                    //        //lblMsg.Text = "Leave has been approved and mailed successfully"; 
+                    arinfo2 = Common.str_split(hfLDates.Value.ToString(), splitter);
+                    if (arinfo2.Length > 1)
+                    {
+                        leaveStart = arinfo2[0];
+                        leaveEnd = arinfo2[1];
+                    }
+                    else if (arinfo2.Length==1)
+                    {
+                        leaveStart = arinfo2[0];
+                        leaveEnd = arinfo2[0];
+                    }
+                    else
+                    {
+                        leaveStart = "";
+                        leaveEnd = "";
+                    }
+
+                    //Email Notification                
+                    mailMessage = objMail.LeaveMail(grLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString(), grLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
+                          Session["EMPID"].ToString(), leaveStart,leaveEnd,"A");
+                    if (mailMessage == "")
+                        mailMessage = "Leave has been approved successfully";
+                    //lblMsg.Text = "Leave has been approved and mailed successfully"; 
                     SiteMaster.ShowClientMessage(Page, "Leave has been approved successfully", "success");
                     break;
 
@@ -133,14 +154,24 @@ namespace WebAdmin.UserControls.Leave
                         grLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), "Y", "N", "D",
                         Session["USERID"].ToString(), Common.ReturnDateTimeInString(Common.DisplayDateTime(DateTime.Now.ToString(), false, Constant.strDateFormat), false,Constant.strDateFormat));
 
-                    ////Email Notification
-                    //lblMsg.Text = objMail.LeaveRegretBySupervisor(grLeaveApp.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), 
-                    //    grLeaveApp.DataKeys[_gridView.SelectedIndex].Values[0].ToString(), Session["EMPID"].ToString(), 
-                    //    Session["USERNAME"].ToString(), Session["DESIGNATION"].ToString(), Session["LOCATION"].ToString(),
-                    //      Session["USERID"].ToString().Trim().ToUpper() == "ADMIN" ? "Y" : "N", Session["EMAILID"].ToString());
-                    //if (lblMsg.Text == "")
-                    //    lblMsg.Text = "Leave has been Regreted Successfully.";
-                    //lblMsg.Text = "Leave has been Regreted and Mailed Successfully";
+                    arinfo2 = Common.str_split(hfLDates.Value.ToString(), splitter);
+                    if (arinfo2.Length > 1)
+                    {
+                        leaveStart = arinfo2[0];
+                        leaveEnd = arinfo2[1];
+                    }
+                    else if (arinfo2.Length == 1)
+                    {
+                        leaveStart = arinfo2[0];
+                        leaveEnd = arinfo2[0];
+                    }
+                    else
+                    {
+                        leaveStart = "";
+                        leaveEnd = "";
+                    }
+                    mailMessage = objMail.LeaveMail(grLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString(), grLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
+                          Session["EMPID"].ToString(), leaveStart,leaveEnd, "D");
                     SiteMaster.ShowClientMessage(Page, "Leave has been Regreted Successfully.", "success");
                     break;
 
@@ -153,12 +184,25 @@ namespace WebAdmin.UserControls.Leave
                         grLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), "Y", "N", "C",
                         Session["USERID"].ToString(), Common.ReturnDateTimeInString(Common.DisplayDateTime( DateTime.Now.ToString(), false, Constant.strDateFormat), false,Constant.strDateFormat));
 
-                    ////Email Notification
-                    //lblMsg.Text = objMail.LeaveCancel(grLeaveApp.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(),
-                    //    grLeaveApp.DataKeys[_gridView.SelectedIndex].Values[0].ToString(), Session["EMPID"].ToString(),
-                    //    Session["USERNAME"].ToString(), Session["DESIGNATION"].ToString(), Session["LOCATION"].ToString(),
-                    //      Session["USERID"].ToString().Trim().ToUpper() == "ADMIN" ? "Y" : "N", Session["EMAILID"].ToString());
-                    
+                    arinfo2 = Common.str_split(hfLDates.Value.ToString(), splitter);
+                    if (arinfo2.Length > 1)
+                    {
+                        leaveStart = arinfo2[0];
+                        leaveEnd = arinfo2[1];
+                    }
+                    else if (arinfo2.Length == 1)
+                    {
+                        leaveStart = arinfo2[0];
+                        leaveEnd = arinfo2[0];
+                    }
+                    else
+                    {
+                        leaveStart = "";
+                        leaveEnd = "";
+                    }
+                    mailMessage = objMail.LeaveMail(grLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString(), grLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
+                          Session["EMPID"].ToString(), leaveStart,leaveEnd, "C");
+
                     SiteMaster.ShowClientMessage(Page, "Leave has been Cancelled Successfully.", "success");              
                     break;
             }

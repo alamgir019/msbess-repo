@@ -71,6 +71,7 @@ namespace WebAdmin.UserControls.Report
             Session["EmpId"] = txtEmpCode.Text.Trim();
             Session["ShiftID"] = "-1";
             Session["IsClosed"] = ddlIsClosed.SelectedValue.ToString();
+            Session["EmpType"] = ddlEmpType.SelectedValue.ToString();
 
             //Open New Window
             StringBuilder sb = new StringBuilder();

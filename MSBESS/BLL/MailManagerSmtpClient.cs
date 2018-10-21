@@ -70,12 +70,17 @@ namespace WebAdmin.BLL
         {           
             string strFwdBy = "";
             DataTable dtFromEmp = new DataTable();
+            string lvAppStatus = "P";
             dtFromEmp = objEmpInfoMgr.SelectEmpInfoSbuWise(strEmpID, "-1");
 
             if (dtFromEmp.Rows.Count > 0)
             {
                 strFromAddr = dtFromEmp.Rows[0]["OfficeEmail"].ToString().Trim();
                 strToEmpId = strSpvID;
+                if (dtFromEmp.Rows[0].["DESIGID"].ToString() == "183")
+                {
+                    lvAppStatus = "R";
+                }
             }
             else
             {
@@ -109,9 +114,8 @@ namespace WebAdmin.BLL
 
             strToAddr = strSpvEmail;
             DataTable dtLeaveApp = new DataTable();
-
            
-            dtLeaveApp = objLeaveMgr.SelectRequestLeaveAppMst(Convert.ToInt32(strLvAppID), strEmpID, "P", strLvPackStartDate, strLvPackEndDate, strToEmpId);
+            dtLeaveApp = objLeaveMgr.SelectRequestLeaveAppMst(Convert.ToInt32(strLvAppID), strEmpID, lvAppStatus, strLvPackStartDate, strLvPackEndDate, strToEmpId);
 
             // Get COPY TO EMAIL Address
             string strCopyToName = "";
@@ -122,7 +126,7 @@ namespace WebAdmin.BLL
             {
                 DateTime ResumeDate = Convert.ToDateTime(dtLeaveApp.Rows[0]["ResumeDate"].ToString());
                 string strVPath = "http://10.0.1.70:82/LogIn";
-                strSubject = "Request for recommending leave.";
+                strSubject = "Request for processing leave.";
                 strBody = " Leave applicant: " + dtFromEmp.Rows[0]["FullName"].ToString() + ", "
                         + dtFromEmp.Rows[0]["DesigName"].ToString() + ", " + dtFromEmp.Rows[0]["DeptName"].ToString() + ", " + dtFromEmp.Rows[0]["DivisionName"].ToString()
                         + " \n\n "
@@ -151,7 +155,7 @@ namespace WebAdmin.BLL
                         + dtFromEmp.Rows[0]["DesigName"].ToString()
                       + " \n "
                        + "======================================"
-                       + " Click here to login for recommendation: " + strVPath;
+                       + " Click here to login for Process: " + strVPath;
             }
             try
             {
@@ -167,7 +171,7 @@ namespace WebAdmin.BLL
                     MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmailUserName, SystemEmailPwd); //"alamgir.bfew@gmail.com", "01924199116");
 
                     MySmtpClient.Send(objMsg);
-                    strErrText = "Mail has been sent to recommendar";
+                    strErrText = "Mail has been sent to responsible Person";
                     //MySmtpClient.SendAsync(objMsg, objMsg.Subject);
                     //MySmtpClient.SendCompleted += new SendCompletedEventHandler(smtp_SendCompleted);
 
@@ -325,81 +329,52 @@ namespace WebAdmin.BLL
         }
 
         // Leave Approve Mail 
-        public string LeaveApproval(string strEmpID, string strLvAppID,
-         string strUserEmpId, string strUserName, string strDesig, string strLocation, string strIsSysAdmin, string strUserEmail, string strOffice, string strTeam)
+        public string LeaveMail(string toEmpID, string strLvAppID,string fromEmpId, string strLvPackStartDate,
+            string strLvPackEndDate, string leaveCondition)
         {
             // Requesting Employee Info
             strErrText = "";
             string strApvBy = "";
             DataTable dtToEmp = new DataTable();
-            dtToEmp = objEmpInfoMgr.SelectEmpInfoSbuWise(strEmpID, "-1");
+            dtToEmp = objEmpInfoMgr.SelectEmpInfoSbuWise(toEmpID, "-1");
 
             if (dtToEmp.Rows.Count > 0)
             {
                 strToAddr = dtToEmp.Rows[0]["OfficeEmail"].ToString().Trim();
             }
+
+            DataTable dtFromEmp = objEmpInfoMgr.SelectEmpInfoSbuWise(fromEmpId, "-1");
+            if (dtFromEmp.Rows.Count>0)
+            {
+                strFromAddr = dtToEmp.Rows[0]["OfficeEmail"].ToString().Trim();
+                strApvBy = dtFromEmp.Rows[0]["FullName"].ToString().Trim() + ", " + dtFromEmp.Rows[0]["DesigName"].ToString().Trim();
+            }
             else
             {
                 strFromAddr = SystemEmail;
             }
-            if (strIsSysAdmin == "N")
-            {
-                if (strUserEmpId != "0")
-                {
-                    if (strEmpID.Trim().ToLower() == strUserEmpId.Trim().ToLower())
-                    {
-                        strUserName = "";
-                        strDesig = "";
-                        strLocation = "";
-                    }
-                    else
-                    {
-                        strApvBy = strUserName + ", " + strDesig + ", " + strOffice + ", " + strTeam;
-                    }
-                }
-                else
-                {
-                    strApvBy = strUserName;
-                }
-            }
-            else
-            {
-                strApvBy = strUserName + "(SysAdmin), " + strDesig + ", " + strLocation;
-            }
-            strFromAddr = strUserEmail;
             DataTable dtLeaveApp = new DataTable();
-            dtLeaveApp = objLeaveMgr.SelectRequestLeaveAppMst(Convert.ToInt32(strLvAppID), strEmpID, "A");
-
-            // Get COPY TO EMAIL Address
-            //string strCopyToName = "";
-            //string strCopyAddr = "";
-
-            //string strCopyToName = strUserName;
-            //string strCopyAddr = strFromAddr;
-
-            //DataTable dtLvCopyTo = new DataTable();
-            //LeaveApplicationManager objLvMgr = new LeaveApplicationManager();
-            //dtLvCopyTo = objLvMgr.SelectLeaveCopyTo(strLvAppID);
-            //foreach (DataRow dRow in dtLvCopyTo.Rows)
-            //{
-            //    if (strCopyToName == "")
-            //    {
-            //        strCopyToName = dRow["SPVFULLNAME"].ToString();
-            //        strCopyAddr = dRow["CopyToEmail"].ToString();
-            //    }
-            //    else
-            //    {
-            //        strCopyToName = strCopyToName + ", " + dRow["SPVFULLNAME"].ToString();
-            //        strCopyAddr = strCopyAddr + ";" + dRow["CopyToEmail"].ToString();
-            //    }
-            //}
-
+            dtLeaveApp = objLeaveMgr.SelectRequestLeaveAppMst(Convert.ToInt32(strLvAppID), toEmpID, leaveCondition, strLvPackStartDate, strLvPackEndDate, strToEmpId);
+            
             if (dtLeaveApp.Rows.Count > 0)
             {
                 DateTime ResumeDate = Convert.ToDateTime(dtLeaveApp.Rows[0]["ResumeDate"].ToString());
-                string strVPath = "http://10.181.66.18:1050/aspire";//http://10.13.1.109:1050/aspire //http://202.84.36.226:1050/payhr
-                strSubject = "Approved as requested.";
-                strBody = " Your leave application is approved. "
+                string strVPath = "http://10.0.1.70:82/LogIn";
+                string condition = "";
+                if (leaveCondition=="A")
+                {
+                    condition = "Approved";
+                }
+                else if (leaveCondition=="D")
+                {
+                    condition = "Regretted";
+                }
+                else if (leaveCondition=="C")
+                {
+                    condition = "Cancelled";
+                }
+                strSubject = condition + " as requested.";
+                strBody = " Your leave application is " + condition + ". "
                         + " \n\n "
                         + "Thanks, "
                         + " \n "
@@ -412,7 +387,7 @@ namespace WebAdmin.BLL
                         + "--------------"
                         + " \n "
                         + "Leave Applicant: " + dtToEmp.Rows[0]["FullName"].ToString() + ", "
-                        + dtToEmp.Rows[0]["JobTitle"].ToString() + ", " + dtToEmp.Rows[0]["DeptName"].ToString() + ", " + dtToEmp.Rows[0]["DivisionName"].ToString()
+                        + dtToEmp.Rows[0]["DeptName"].ToString() + ", " + dtToEmp.Rows[0]["DivisionName"].ToString()
                         + " \n "
                         + "Date of Application:  " + dtLeaveApp.Rows[0]["AppDate"].ToString()
                         + " \n "
@@ -421,44 +396,37 @@ namespace WebAdmin.BLL
                         + "From: " + Common.DisplayDate(dtLeaveApp.Rows[0]["LeaveStart"].ToString())
                         + " \n "
                         + "To: " + Common.DisplayDate(dtLeaveApp.Rows[0]["LeaveEnd"].ToString())
-                        + " \n "
-                        + "Back in office: " + Common.DisplayDate(ResumeDate.ToShortDateString())
-                        + " \n "
-                        + "Reason for leave: " + dtLeaveApp.Rows[0]["LTreason"].ToString()
+                        + " \n ";
+                if (leaveCondition=="A")
+                {
+                    strBody += "Back in office: " + Common.DisplayDate(ResumeDate.ToShortDateString())+ " \n ";
+
+                }
+                        strBody += "Reason for leave: " + dtLeaveApp.Rows[0]["LTreason"].ToString()
                         + " \n "
                         + "Contact number: " + dtLeaveApp.Rows[0]["PhoneNo"].ToString()
                         + " \n "
                        + "===================================================="
-                       + " \n\n ";
+                       + " \n\n "
+                       + " Click here to login for leave details: " + strVPath;                
             }
             try
             {
                 if (strFromAddr != "" && strToAddr != "")
                 {
-                    //SmtpClient MySmtpClient = new SmtpClient(MailServer, MailPort);
-
-                    //MySmtpClient.UseDefaultCredentials = false;
-                    //MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmailUserName, SystemEmailPwd);
-                    //System.Net.Mail.MailMessage objMsg = new System.Net.Mail.MailMessage(strFromAddr, strToAddr, strSubject, strBody);
-                    //MySmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    
-                    //MySmtpClient.Send(objMsg);
-
-                    strFromAddr = "alamgir.bfew@gmail.com";
-                    strToAddr = "alamgir.bfew@gmail.com";
                     MailMessage objMsg = new MailMessage(strFromAddr, strToAddr, strSubject, strBody);
-                   
-                    SmtpClient MySmtpClient = new SmtpClient("smtp.gmail.com");
-                    MySmtpClient.Port = 25;
-                    MySmtpClient.EnableSsl = true;
-                    MySmtpClient.Credentials = new System.Net.NetworkCredential("alamgir.bfew@gmail.com", "01924199116");
+                    SmtpClient MySmtpClient = new SmtpClient(MailServer);//"smtp.gmail.com");
+                    MySmtpClient.Port = MailPort;
+                    MySmtpClient.EnableSsl = Convert.ToBoolean(Enablessl);
+                    MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmailUserName, SystemEmailPwd); 
 
+                    MySmtpClient.Send(objMsg);
+                    strErrText = "Mail has been sent";
                     //MySmtpClient.SendAsync(objMsg, objMsg.Subject);
-                    //MySmtpClient.SendCompleted += new SendCompletedEventHandler(smtp_SendCompleted);
-
+                    //MySmtpClient.SendCompleted += new SendCompletedEventHandler(smtp_SendCompleted);          
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 strErrText = "Mail is not send. Please configure the internet.";
             }

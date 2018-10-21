@@ -81,7 +81,7 @@ namespace WebAdmin.CrystalReports
 
                         MyDataTable = rptManager.Get_Attandance(Session["Flag"].ToString(), Session["USERID"].ToString(), Session["ISADMIN"].ToString(), Session["FromDate"].ToString(), Session["ToDate"].ToString(),
                             Session["DivisionId"].ToString(), Session["SbuId"].ToString(), Session["DeptId"].ToString(), Session["EmpId"].ToString(),
-                            Session["ShiftID"].ToString(), Session["isClosed"].ToString());
+                            Session["ShiftID"].ToString(), Session["EmpType"].ToString());
                         
                         ReportDoc.SetDataSource(MyDataTable);
                         ReportDoc.SetParameterValue("pDIV", Session["DivisionId"].ToString());

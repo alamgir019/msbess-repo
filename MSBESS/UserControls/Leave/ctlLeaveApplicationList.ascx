@@ -57,10 +57,7 @@
                                     <asp:GridView
                                         ID="grLeaveList" runat="server" AutoGenerateColumns="False" Width="100%"
                                         DataKeyNames="LvAppID,LTypeTitle,LTypeId,LNature,AppDate,LeaveStart,LeaveEnd,LDurInDays,InsertedBy,LTReason,LAbbrName,EmpId,Fullname,SupervisorId"
-                                        EmptyDataText="No Record Found"
-                                        class="table table-bordered table-hover"
-                                        OnRowCommand="grLeaveApp_RowCommand"
-                                        PageSize="10">
+                                        EmptyDataText="No Record Found" class="table table-bordered table-hover" OnRowCommand="grLeaveApp_RowCommand" PageSize="10">
                                         <HeaderStyle BackColor="#B3CDE4" Font-Bold="True" Font-Size="Small"></HeaderStyle>
                                         <SelectedRowStyle BackColor="#D1DDF1" ForeColor="#333333" Font-Bold="True" Font-Size="Small"></SelectedRowStyle>
                                         <AlternatingRowStyle BackColor="#EFF3FB" Font-Size="Small"></AlternatingRowStyle>

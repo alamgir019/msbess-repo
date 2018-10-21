@@ -50,6 +50,21 @@ namespace WebAdmin.UserControls.Attendance
         {
             SaveData();
         }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string fromDate = Common.ReturnDateTimeInString(dtpFromDate.Text, false, Constant.strDateFormat);
+            string toDate = Common.ReturnDateTimeInString(dtpToDate.Text, false, Constant.strDateFormat);
+            DataTable dtAwayUsers = objAM.getDeskAwayReport(fromDate, toDate, Session["EMPID"].ToString().Trim());
+            grDeskAway.DataSource = dtAwayUsers;
+            grDeskAway.DataBind();
+            ScriptManager.RegisterClientScriptBlock(Page, typeof(string), Guid.NewGuid().ToString(), "$('#myModal').modal('show');", true);
+        }
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            dtpFromDate.Text = "";
+            dtpToDate.Text = "";
+            ScriptManager.RegisterClientScriptBlock(Page, typeof(string), Guid.NewGuid().ToString(), "$('#myModal').modal('show');", true);
+        }
         private void SaveData()
         {
             string cmdType;

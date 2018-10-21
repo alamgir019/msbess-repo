@@ -395,6 +395,9 @@
                                                     </td>
                                                     <td>
                                                         <asp:DropDownList ID="ddlEmpType" runat="server" Width="127px" CssClass="textlevelleft">
+                                                            <asp:ListItem Selected="True" Value="-1">All</asp:ListItem>
+                                                            <asp:ListItem Value="A">Active</asp:ListItem>
+                                                            <asp:ListItem Value="I">InActive</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
@@ -420,13 +423,14 @@
                                                                 <div class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
-                                                                <asp:TextBox ID="txtFromDate" runat="server" class="form-control pull-right datepicker"></asp:TextBox>
+                                                                <asp:TextBox autocomplete="off" ID="txtFromDate" runat="server" class="form-control pull-right datepicker"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                                                 ControlToValidate="txtFromDate" ErrorMessage="INVALID" class="text-danger validator"
-                                                                ValidationExpression="^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-./])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$"></asp:RegularExpressionValidator>
+                                                                ValidationExpression="^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-./])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$">
+                                                            </asp:RegularExpressionValidator>
                                                         </div>
                                                     </td>
                                                     <td style="width: 50px">
@@ -438,7 +442,7 @@
                                                                 <div class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
-                                                                <asp:TextBox ID="txtToDate" runat="server" class="form-control pull-right datepicker"></asp:TextBox>
+                                                                <asp:TextBox autocomplete="off" ID="txtToDate" runat="server" class="form-control pull-right datepicker"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">

@@ -361,6 +361,10 @@ namespace WebAdmin.BLL
             else
                 p_ToDate.Value = "";
 
+            if (objDAL.ds.Tables["tblEmployeeInfo"] != null)
+            {
+                objDAL.ds.Tables["tblEmployeeInfo"].Rows.Clear();
+            }
             objDAL.CreateDSFromProc(command, "tblEmployeeInfo");
             return objDAL.ds.Tables["tblEmployeeInfo"];
         }
@@ -375,7 +379,10 @@ namespace WebAdmin.BLL
             SqlParameter p_SbuId = command.Parameters.Add("SbuId", SqlDbType.BigInt);
             p_SbuId.Direction = ParameterDirection.Input;
             p_SbuId.Value = sbuID;
-
+            if (objDAL.ds.Tables["tblEmployeeInfo"]!=null)
+            {
+                objDAL.ds.Tables["tblEmployeeInfo"].Clear();
+            }
             objDAL.CreateDSFromProc(command, "tblEmployeeInfo");
             return objDAL.ds.Tables["tblEmployeeInfo"];
         }

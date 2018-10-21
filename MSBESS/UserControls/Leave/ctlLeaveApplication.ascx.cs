@@ -1003,7 +1003,10 @@ namespace WebAdmin.UserControls.Leave
                     hdfPreLEnjoyed.Value = hdfPreLEnjoyed.Value;
                 }
             }
-            hdfAppStatus.Value = "P";
+            if (Session["DESIGID"].ToString()=="183") //country director
+                hdfAppStatus.Value = "R";
+            else
+                hdfAppStatus.Value = "P";
 
             List<DataRow> lstRow = new List<DataRow>();
 
