@@ -8,6 +8,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Data;
 using WebAdmin.BLL;
+using System.Text;
 
 namespace WebAdmin.CrystalReports
 {
@@ -19,6 +20,7 @@ namespace WebAdmin.CrystalReports
         DataTable MyDataTable = new DataTable();
         ReportManager rptManager = new ReportManager();
         CashInWord InWord = new CashInWord();
+
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -120,6 +122,7 @@ namespace WebAdmin.CrystalReports
                     }
             }
         }
+
         //protected string CountStatus(string strStatus, DataTable dt)
 
         //{
@@ -165,8 +168,7 @@ namespace WebAdmin.CrystalReports
 
         //    CRVT.ParameterFieldInfo = pFields;
         //}
-
-
+        
         public void PassParameterHeader(string ReportName, string FromDate, string ToDate)
         {
             ParameterFields pFields = new ParameterFields();

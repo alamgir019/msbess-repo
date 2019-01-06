@@ -22,6 +22,17 @@ namespace WebAdmin.BLL
             objDAL.CreateDSFromProc(command, "RelationList");
             return objDAL.ds.Tables["RelationList"];
         }
+        
+        public DataTable SelectProjectList(int Id)
+        {
+            SqlCommand command = new SqlCommand("proc_Select_ProjectList");
 
+            SqlParameter p_Id = command.Parameters.Add("ProjectId", SqlDbType.BigInt);
+            p_Id.Direction = ParameterDirection.Input;
+            p_Id.Value = Id;
+
+            objDAL.CreateDSFromProc(command, "tblProjectList");
+            return objDAL.ds.Tables["tblProjectList"];
+        }
     }
 }

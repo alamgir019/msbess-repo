@@ -1668,7 +1668,31 @@ namespace WebAdmin.BLL
                 return (Convert.ToDateTime(strRetDate));
             }
         }
+        public static string ReturnDate(string txt)
+        {
+            string[] arInfo = new string[4];
+            string[] arInfo2 = new string[4];
+            string strDay, strMon, strYear, strDate;
 
+            //string strUpperTime="00:00:00 AM";
+            //string strLowerTime=""
+            char[] splitter = { ' ' };
+            arInfo = str_split(txt, splitter);
+            char[] splitter2 = { '/' };
+            arInfo2 = str_split(arInfo[0], splitter2);
+            if (string.Compare(arInfo2[0], arInfo[0]) == 0)
+            {
+                char[] splitter3 = { '-' };
+                arInfo2 = str_split(arInfo[0], splitter3);
+            }
+            // dtDate = Convert.ToDateTime(arInfo[0]);
+            strDay = arInfo2[0];
+            strMon = arInfo2[1];
+            strYear = arInfo2[2];
+            strDate = strYear + "/" + strMon + "/" + strDay;
+            return strDate;
+            //string strDay=(txt.Text.Trim(),'-');
+        }
         public static string ReturnDateTimeInString(string strDate, bool isReturnTime, string strDisplayingFormat)
         {
             // strFormat: the format in which date is displaying in the screen. Output format is alwasys yyyy-mm-dd

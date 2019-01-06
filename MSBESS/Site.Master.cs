@@ -141,6 +141,10 @@ namespace WebAdmin
                     liRegrettedLeaveList.Visible = false;
                     liApprovedLeaveList.Visible = false;
                 }
+                if (Session["IsCountryDirector"].ToString()=="Y")
+                {
+                    liLeaveRecommendation.Visible = false;
+                }
             }
                 Thread.Sleep(200);
                 ScriptManager.RegisterStartupScript(this.UpdatePanelMaster, typeof(string), "ValidatorUpdateDisplay", this.GetValidatationScript(), true);
@@ -243,7 +247,6 @@ namespace WebAdmin
             Session["PROGRAMID"] = "";
             Session["TEAM"] = "";
             Session["TEAMID"] = "";
-            Session["EMPLOYEEID"] = "";
             Session["ISADMIN"] = "";
             Session["ISSHIFTINCHR"] = "";
             Session["DESIGNATION"] = "";

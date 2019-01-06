@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 using WebAdmin.BLL;
-using System.Threading;
+using System.Data;
 using System.Text;
+using System.Threading;
 
 namespace WebAdmin.UserControls.Leave
-{
-    public partial class ctlLeaveRecommendation : System.Web.UI.UserControl
+{  
+    public partial class ctlRegrettedLeaveList : System.Web.UI.UserControl
     {
         LeaveManager objLeaveMgr = new LeaveManager();
         protected void Page_Load(object sender, EventArgs e)
@@ -26,12 +26,11 @@ namespace WebAdmin.UserControls.Leave
                 }
                 this.OpenRecord();
             }
-
         }
         private void OpenRecord()
         {
-            grRecommendLeaveList.DataSource = null;
-            grRecommendLeaveList.DataBind();
+            grRegrettedLeaveList.DataSource = null;
+            grRegrettedLeaveList.DataBind();
 
             string strStartDate = DateTime.Now.Year.ToString();
             string strEndDate = Convert.ToString(Convert.ToInt32(strStartDate) + 1);
@@ -41,15 +40,17 @@ namespace WebAdmin.UserControls.Leave
             DataTable dtLeaveDeny = new DataTable();
             if (Session["ISADMIN"].ToString() == "N")
             {
-                dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "", "P", strStartDate, strEndDate, Session["EMPID"].ToString().Trim());
+                dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "", "D", strStartDate, strEndDate, Session["EMPID"].ToString().Trim());
+                //dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, Session["EMPID"].ToString().Trim(), "D", strStartDate, strEndDate, "");
             }
             else
             {
-                dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "", "P", strStartDate, strEndDate, "");
+                dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "", "D", strStartDate, strEndDate, "");
+                //dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "N", "D", strStartDate, strEndDate, "");
             }
 
-            grRecommendLeaveList.DataSource = dtLeaveDeny;
-            grRecommendLeaveList.DataBind();
+            grRegrettedLeaveList.DataSource = dtLeaveDeny;
+            grRegrettedLeaveList.DataBind();
             this.FormatDenyGridDate();
             dtLeaveDeny.Rows.Clear();
             dtLeaveDeny.Dispose();
@@ -57,16 +58,16 @@ namespace WebAdmin.UserControls.Leave
         protected void FormatDenyGridDate()
         {
             int SlNo = 0;
-            foreach (GridViewRow gRow in grRecommendLeaveList.Rows)
+            foreach (GridViewRow gRow in grRegrettedLeaveList.Rows)
             {
                 SlNo = SlNo + 1;
                 gRow.Cells[0].Text = SlNo.ToString();
-                gRow.Cells[1].Text = grRecommendLeaveList.DataKeys[SlNo - 1].Values[12].ToString() + " [" + gRow.Cells[1].Text.ToUpper() + "]" +
-                    "<br/> Applied For: " + grRecommendLeaveList.DataKeys[SlNo - 1].Values[1].ToString() +
-                    "<br/> Applied On : " + Common.DisplayDateTime(grRecommendLeaveList.DataKeys[SlNo - 1].Values[4].ToString(), false, Constant.strDateFormat);
-                gRow.Cells[2].Text = Common.DisplayDateTime(grRecommendLeaveList.DataKeys[SlNo - 1].Values[5].ToString(), false, Constant.strDateFormat) +
-                  " To " + Common.DisplayDateTime(grRecommendLeaveList.DataKeys[SlNo - 1].Values[6].ToString(), false, Constant.strDateFormat) +
-                  "<br/> Duration : " + Convert.ToString(Math.Round(Convert.ToDouble(grRecommendLeaveList.DataKeys[SlNo - 1].Values[7].ToString()), 1));
+                gRow.Cells[1].Text = grRegrettedLeaveList.DataKeys[SlNo - 1].Values[12].ToString() + " [" + gRow.Cells[1].Text.ToUpper() + "]" +
+                    "<br/> Applied For: " + grRegrettedLeaveList.DataKeys[SlNo - 1].Values[1].ToString() +
+                    "<br/> Applied On : " + Common.DisplayDateTime(grRegrettedLeaveList.DataKeys[SlNo - 1].Values[4].ToString(), false, Constant.strDateFormat);
+                gRow.Cells[2].Text = Common.DisplayDateTime(grRegrettedLeaveList.DataKeys[SlNo - 1].Values[5].ToString(), false, Constant.strDateFormat) +
+                  " To " + Common.DisplayDateTime(grRegrettedLeaveList.DataKeys[SlNo - 1].Values[6].ToString(), false, Constant.strDateFormat) +
+                  "<br/> Duration : " + Convert.ToString(Math.Round(Convert.ToDouble(grRegrettedLeaveList.DataKeys[SlNo - 1].Values[7].ToString()), 1));
             }
             SlNo = 0;
         }
@@ -79,9 +80,9 @@ namespace WebAdmin.UserControls.Leave
                 if (dtLeaveProfile.Rows.Count > 0)
                 {
                     if (string.IsNullOrEmpty(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) == false)
-                        hfLEnjoyed.Value = Convert.ToString(Convert.ToDecimal(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) + Convert.ToDecimal(grRecommendLeaveList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim()));
+                        hfLEnjoyed.Value = Convert.ToString(Convert.ToDecimal(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) + Convert.ToDecimal(grRegrettedLeaveList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim()));
                     else
-                        hfLEnjoyed.Value = grRecommendLeaveList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim();
+                        hfLEnjoyed.Value = grRegrettedLeaveList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim();
                 }
             }
             else if (gridStatus == "D")
@@ -90,7 +91,7 @@ namespace WebAdmin.UserControls.Leave
                 if (dtLeaveProfile.Rows.Count > 0)
                 {
                     if (string.IsNullOrEmpty(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) == false)
-                        hfLEnjoyed.Value = Convert.ToString(Convert.ToDecimal(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) + Convert.ToDecimal(grRecommendLeaveList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim()));
+                        hfLEnjoyed.Value = Convert.ToString(Convert.ToDecimal(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) + Convert.ToDecimal(grRegrettedLeaveList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim()));
                     else
                         hfLEnjoyed.Value = "0";
                 }
@@ -130,18 +131,19 @@ namespace WebAdmin.UserControls.Leave
                 }
             }
         }
-        protected void grRecommendLeaveList_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void grRegrettedLeaveList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridView _gridView = (GridView)sender;
             // Get the selected index and the command name
             int _selectedIndex = int.Parse(e.CommandArgument.ToString());
             string _commandName = e.CommandName;
             _gridView.SelectedIndex = _selectedIndex;
+            string strPreYrLv = "";
             switch (_commandName)
             {
                 case ("ViewClick"):
                     StringBuilder sb = new StringBuilder();
-                    string strURL = "LeaveApplicationView.aspx?params=" + grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString() + "," + grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString().Trim() + ", R" + ", M"; ;
+                    string strURL = "LeaveApplicationView.aspx?params=" + grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim() + "," + grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString().Trim() + ", D" + ", R"; ;
                     // string strURL = "LeaveApplicationView.aspx";
                     sb.Append("<script>");
 
@@ -153,12 +155,12 @@ namespace WebAdmin.UserControls.Leave
                     break;
 
                 case ("CancelClick"):
-                    AvailableLeave("A", grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[2].ToString(), _gridView.SelectedIndex);
-                    this.GetLeaveDates(grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(), "A", grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[4].ToString(), grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[5].ToString());
+                    AvailableLeave("A", grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[2].ToString(), _gridView.SelectedIndex);
+                    this.GetLeaveDates(grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(), "A", grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[4].ToString(), grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[5].ToString());
                     //CalculateLeaveDates("A");
                     //this.GetWeekend(grLeaveApp.SelectedRow.Cells[1].Text.Trim(), grLeaveApp.SelectedRow.Cells[4].Text.Trim(), grLeaveApp.SelectedRow.Cells[5].Text.Trim(),"A"); 
-                    objLeaveMgr.CancelLeaveApp(grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
-                        grRecommendLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), "Y", "N", "C",
+                    objLeaveMgr.CancelLeaveApp(grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
+                        grRegrettedLeaveList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), "Y", "N", "C",
                         Session["USERID"].ToString(), Common.ReturnDateTimeInString(Common.DisplayDateTime(DateTime.Now.ToString(), false, Constant.strDateFormat), false, Constant.strDateFormat));
 
                     SiteMaster.ShowClientMessage(Page, "Leave has been Cancelled Successfully.", "success");
@@ -166,6 +168,7 @@ namespace WebAdmin.UserControls.Leave
             }
 
             this.OpenRecord();
+            strPreYrLv = "";
         }
     }
 }

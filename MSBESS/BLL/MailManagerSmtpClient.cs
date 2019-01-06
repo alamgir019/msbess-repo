@@ -18,18 +18,18 @@ namespace WebAdmin.BLL
         //Payroll_EmpPARMgr objPARMgr = new Payroll_EmpPARMgr();
         //DBConnector objDC = new DBConnector();
 
-        string strFromAddr = "";
-        string strToEmpId = "";
-        string strToAddr = "";
-        string strSubject = "";
-        string strBody = "";
-        string strErrText = "";
-        string MailServer = "";
-        string SystemEmail = "";
-        string SystemEmailUserName = "";
-        string SystemEmailPwd = "";
-        string Enablessl = "";
-        int MailPort;
+        public string strFromAddr = "";
+        public string strToEmpId = "";
+        public string strToAddr = "";
+        public string strSubject = "";
+        public string strBody = "";
+        public string strErrText = "";
+        public string MailServer = "";
+        public string SystemEmail = "";
+        public string SystemEmailUserName = "";
+        public string SystemEmailPwd = "";
+        public string Enablessl = "";
+        public int MailPort;
         public MailManagerSmtpClient()
         {
             //
@@ -66,21 +66,20 @@ namespace WebAdmin.BLL
         // Leave Application Mail
         public string RequestForApproval(string strEmpID, string strLvAppID, string strLvPackStartDate,
             string strLvPackEndDate, string strUserEmpId, string strUserName, string strDesig, string strLocation, string strIsSysAdmin,
-            string strSpvID, string strSpvEmail)
+            string strSpvID, string strSpvEmail, string lvAppStatus)
         {           
             string strFwdBy = "";
             DataTable dtFromEmp = new DataTable();
-            string lvAppStatus = "P";
             dtFromEmp = objEmpInfoMgr.SelectEmpInfoSbuWise(strEmpID, "-1");
 
             if (dtFromEmp.Rows.Count > 0)
             {
                 strFromAddr = dtFromEmp.Rows[0]["OfficeEmail"].ToString().Trim();
                 strToEmpId = strSpvID;
-                if (dtFromEmp.Rows[0].["DESIGID"].ToString() == "183")
-                {
-                    lvAppStatus = "R";
-                }
+                //if (dtFromEmp.Rows[0]["DesigId"].ToString() == "183")
+                //{
+                //    lvAppStatus = "R";
+                //}
             }
             else
             {
@@ -435,6 +434,39 @@ namespace WebAdmin.BLL
             dtToEmp.Dispose();
             return strErrText;
         }
+
+
+        public string SendMSBMail()
+        {
+            try
+            {
+                if (strFromAddr != "" && strToAddr != "")
+                {
+                    //strFromAddr = "alamgir.bfew@gmail.com";
+                    //strToAddr= "alamgir.bfew@gmail.com";
+                    MailMessage objMsg = new MailMessage(strFromAddr, strToAddr, strSubject, strBody);
+                    //objMsg.IsBodyHtml = true;
+                    SmtpClient MySmtpClient = new SmtpClient(MailServer);//"smtp.gmail.com");
+                    MySmtpClient.Port = MailPort;
+                    MySmtpClient.EnableSsl = Convert.ToBoolean(Enablessl);
+                    MySmtpClient.UseDefaultCredentials = false;
+                    MySmtpClient.Credentials = new System.Net.NetworkCredential(SystemEmailUserName, SystemEmailPwd); //"alamgir.bfew@gmail.com", "01924199116");
+
+                    MySmtpClient.Send(objMsg);
+                    strErrText = "Mail has been sent to recommendar";
+                    //MySmtpClient.SendAsync(objMsg, objMsg.Subject);
+                    //MySmtpClient.SendCompleted += new SendCompletedEventHandler(smtp_SendCompleted);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                strErrText = ex.Message;// "Mail is not send. Please configure the internet.";
+            }
+            return strErrText;
+        }
+
 
         #endregion
     }

@@ -763,6 +763,8 @@ namespace WebAdmin.App_Data {
             
             private global::System.Data.DataColumn columnTakaInWord;
             
+            private global::System.Data.DataColumn columnTotalLoan;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtPaySlipAllDataTable() {
@@ -1078,6 +1080,14 @@ namespace WebAdmin.App_Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalLoanColumn {
+                get {
+                    return this.columnTotalLoan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1148,7 +1158,8 @@ namespace WebAdmin.App_Data {
                         decimal OD, 
                         decimal TDed, 
                         decimal NetSal, 
-                        string TakaInWord) {
+                        string TakaInWord, 
+                        decimal TotalLoan) {
                 dtPaySlipAllRow rowdtPaySlipAllRow = ((dtPaySlipAllRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         EmpId,
@@ -1185,7 +1196,8 @@ namespace WebAdmin.App_Data {
                         OD,
                         TDed,
                         NetSal,
-                        TakaInWord};
+                        TakaInWord,
+                        TotalLoan};
                 rowdtPaySlipAllRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtPaySlipAllRow);
                 return rowdtPaySlipAllRow;
@@ -1243,6 +1255,7 @@ namespace WebAdmin.App_Data {
                 this.columnTDed = base.Columns["TDed"];
                 this.columnNetSal = base.Columns["NetSal"];
                 this.columnTakaInWord = base.Columns["TakaInWord"];
+                this.columnTotalLoan = base.Columns["TotalLoan"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1318,6 +1331,8 @@ namespace WebAdmin.App_Data {
                 base.Columns.Add(this.columnNetSal);
                 this.columnTakaInWord = new global::System.Data.DataColumn("TakaInWord", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTakaInWord);
+                this.columnTotalLoan = new global::System.Data.DataColumn("TotalLoan", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalLoan);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4268,6 +4283,22 @@ namespace WebAdmin.App_Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal TotalLoan {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtPaySlipAll.TotalLoanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalLoan\' in table \'dtPaySlipAll\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtPaySlipAll.TotalLoanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEmpIdNull() {
                 return this.IsNull(this.tabledtPaySlipAll.EmpIdColumn);
             }
@@ -4684,6 +4715,18 @@ namespace WebAdmin.App_Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTakaInWordNull() {
                 this[this.tabledtPaySlipAll.TakaInWordColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalLoanNull() {
+                return this.IsNull(this.tabledtPaySlipAll.TotalLoanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalLoanNull() {
+                this[this.tabledtPaySlipAll.TotalLoanColumn] = global::System.Convert.DBNull;
             }
         }
         

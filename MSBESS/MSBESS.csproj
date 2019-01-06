@@ -526,6 +526,10 @@
     <Content Include="Pages\EmpFileUpload.aspx" />
     <Content Include="Pages\EmpFileViewer.aspx" />
     <Content Include="Pages\EmpPresentStatus.aspx" />
+    <Content Include="Pages\EmpTravel.aspx" />
+    <Content Include="Pages\TravelToApprove.aspx" />
+    <Content Include="Pages\TravelRecommendation.aspx" />
+    <Content Include="Pages\TravelStatusList.aspx" />
     <Content Include="Pages\LeavePendingList.aspx" />
     <Content Include="Pages\LeaveStatement.aspx" />
     <Content Include="Pages\MonthlyAttendance.aspx" />
@@ -537,6 +541,7 @@
     <Content Include="UserControls\EIS\ctlEmpFileReader.ascx" />
     <Content Include="UserControls\EIS\ctlEmpFileUpload.ascx" />
     <Content Include="UserControls\EIS\ctlEmpPresentStatus.ascx" />
+    <Content Include="UserControls\Travel\ctlEmpTravel.ascx" />
     <Content Include="UserControls\Leave\ctlLeaveStatement.ascx" />
     <Content Include="UserControls\Leave\ctlPendingLeaveList.ascx" />
     <Content Include="UserControls\Payroll\ctlTaxCalculation.ascx" />
@@ -622,6 +627,9 @@
     <Content Include="UserControls\Leave\ctlLeaveRecommendation.ascx" />
     <Content Include="UserControls\Leave\ctlRegrettedLeaveList.ascx" />
     <Content Include="UserControls\Payroll\ctlMonthlyPayslip.ascx" />
+    <Content Include="UserControls\Travel\ctlTravelToApprove.ascx" />
+    <Content Include="UserControls\Travel\ctlTravelRecommendation.ascx" />
+    <Content Include="UserControls\Travel\ctlTravelStatusList.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -634,7 +642,7 @@
     <None Include="App_Data\dsEmployee.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsEmployee.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsEmployee1.Designer.cs</LastGenOutput>
     </None>
     <Content Include="App_Data\dsEmployee.xss">
       <DependentUpon>dsEmployee.xsd</DependentUpon>
@@ -678,6 +686,7 @@
     <Compile Include="BLL\Common.cs" />
     <Compile Include="BLL\Constant.cs" />
     <Compile Include="BLL\EmpInfoManager.cs" />
+    <Compile Include="BLL\EmpTravelManager.cs" />
     <Compile Include="BLL\LeaveManager.cs" />
     <Compile Include="BLL\LoginManager.cs" />
     <Compile Include="BLL\MailManagerSmtpClient.cs" />
@@ -712,6 +721,12 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="CrystalReports\rptTravelApplication.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTravelApplication.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReports\rptITAssessment.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -733,6 +748,7 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="DAL\DAO\clsEmpTravel.cs" />
     <Compile Include="DAL\UserCreation.cs" />
     <Compile Include="App_Data\dsReports.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -787,6 +803,31 @@
     </Compile>
     <Compile Include="Pages\EmpPresentStatus.aspx.designer.cs">
       <DependentUpon>EmpPresentStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmpTravel.aspx.cs">
+      <DependentUpon>EmpTravel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TravelToApprove.aspx.cs">
+      <DependentUpon>TravelToApprove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TravelToApprove.aspx.designer.cs">
+      <DependentUpon>TravelToApprove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TravelRecommendation.aspx.cs">
+      <DependentUpon>TravelRecommendation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TravelRecommendation.aspx.designer.cs">
+      <DependentUpon>TravelRecommendation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TravelStatusList.aspx.cs">
+      <DependentUpon>TravelStatusList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TravelStatusList.aspx.designer.cs">
+      <DependentUpon>TravelStatusList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeavePendingList.aspx.cs">
       <DependentUpon>LeavePendingList.aspx</DependentUpon>
@@ -864,6 +905,13 @@
     </Compile>
     <Compile Include="UserControls\EIS\ctlEmpPresentStatus.ascx.designer.cs">
       <DependentUpon>ctlEmpPresentStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlEmpTravel.ascx.cs">
+      <DependentUpon>ctlEmpTravel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlEmpTravel.ascx.designer.cs">
+      <DependentUpon>ctlEmpTravel.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Leave\ctlLeaveStatement.ascx.cs">
       <DependentUpon>ctlLeaveStatement.ascx</DependentUpon>
@@ -1128,6 +1176,27 @@
     <Compile Include="UserControls\Payroll\ctlMonthlyPayslip.ascx.designer.cs">
       <DependentUpon>ctlMonthlyPayslip.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Travel\ctlTravelToApprove.ascx.cs">
+      <DependentUpon>ctlTravelToApprove.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlTravelToApprove.ascx.designer.cs">
+      <DependentUpon>ctlTravelToApprove.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlTravelRecommendation.ascx.cs">
+      <DependentUpon>ctlTravelRecommendation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlTravelRecommendation.ascx.designer.cs">
+      <DependentUpon>ctlTravelRecommendation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlTravelStatusList.ascx.cs">
+      <DependentUpon>ctlTravelStatusList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Travel\ctlTravelStatusList.ascx.designer.cs">
+      <DependentUpon>ctlTravelStatusList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1138,6 +1207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CrystalReports\Attendance\" />
+    <Folder Include="CrystalReports\VirtualReport\" />
     <Folder Include="crystalreportviewers13\" />
     <Folder Include="Images\" />
   </ItemGroup>
@@ -1165,6 +1235,12 @@
       <LastGenOutput>rptYearlyPFBalance.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReports\rptTravelApplication.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTravelApplication.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

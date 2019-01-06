@@ -18,7 +18,6 @@ namespace WebAdmin.BLL
         {
             this.objDAL.SaveDataTable(dtData, CmdType);
         }
-
         public void UpdatePhoto(Byte[] photo,string empid)
         {
             string strSQL = "UPDATE EmpInfo SET EmpImage=@EmpImage WHERE EmpID=@EmpID ";
@@ -73,7 +72,6 @@ namespace WebAdmin.BLL
 
             return objDAL.CreateDT(command, "SelectEmpInfo");
         }
-
         public DataTable SelectEmpPresentStatus(string EmpId)
         {
             if (objDAL.ds.Tables["EmpPresentStatus"] != null)
@@ -111,7 +109,6 @@ namespace WebAdmin.BLL
             string sql = "";
             DataRow[] mRows;
             DataRow[] cRows;
-           
 
             sql = "SELECT EMPID,FULLNAME,SUPERVISORID,OFFICEEMAIL,ISCOUNTRYDIRECTOR  FROM EMPINFO WHERE EMPSTATUS='A' ORDER BY EMPID";
             DataTable dtEmp = objDAL.CreateDT(sql, "SPVWiseEmp");
@@ -179,10 +176,7 @@ namespace WebAdmin.BLL
             DataTable dtFiscalyear = objDAL.CreateDT(sql, "dtFiscalYearList");
             
             return dtFiscalyear;
-        }
-
-
-
+        }        
         #endregion
 
         public DataTable SelectEmpInfoHRAction(string EmpID)
@@ -194,6 +188,7 @@ namespace WebAdmin.BLL
             objDAL.CreateDSFromProc(command, "tblEmpInfoHrAction");
             return objDAL.ds.Tables["tblEmpInfoHrAction"];
         }
+
         #region Nominee Info
         public DataTable SelectNominee(string EmpId, string NomineeType)
         {
@@ -211,6 +206,7 @@ namespace WebAdmin.BLL
             return objDAL.ds.Tables["tblNominee"];
         }
         #endregion
+
         #region Family Info
         public DataTable SelectFamilyInfo(string EmpId, int FmID)
         {
@@ -387,6 +383,7 @@ namespace WebAdmin.BLL
             return objDAL.ds.Tables["tblEmployeeInfo"];
         }
         #endregion
+
         #region Payroll
         public DataTable SelectEmpPayslipPersonalInfo(string strEmpID)
         {

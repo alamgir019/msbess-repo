@@ -60,13 +60,12 @@ namespace WebAdmin
                         {
                             Session["USERID"] = userid.ToString();
                             Session["USERNAME"] = row["FullName"].ToString();
-                            Session["EMPID"] = row["EMPID"].ToString();
+                            Session["EMPID"] = row["EMPID"].ToString().Trim();
                             Session["EMAILID"] = row["OfficeEmail"].ToString();
                             Session["DIVISIONID"]= row["DivisionId"].ToString();
                             Session["OFFICE"] = row["DivisionName"].ToString();
                             Session["TEAM"] = row["DEPTNAME"].ToString();
                             Session["TEAMID"] = row["DEPTID"].ToString();
-                            Session["EMPLOYEEID"] = row["EmpId"].ToString().Trim();
                             Session["ISADMIN"] = row["IsAdmin"].ToString().Trim();
                             Session["DESIGNATION"] = row["JobTitleName"].ToString().Trim();
                             Session["DESIGID"] = row["JobTitleId"].ToString().Trim();
@@ -74,6 +73,7 @@ namespace WebAdmin
                             Session["JOINDATE"] = Common.DisplayDateTime(row["JoiningDate"].ToString().Trim(),false,Constant.strDateFormat);
                             Session["FISCALYRID"] = strFiscalYear;
                             Session["FISCALSTARTDATE"] = strFiscalStartDate;
+                            Session["IsCountryDirector"] = row["IsCountryDirector"] == null ? "" : row["IsCountryDirector"].ToString();
                             //if (Common.CheckNullString(row["EmpImage"].ToString().Trim()) != "")
                             //{
                             //    MemoryStream ms = new MemoryStream((byte[])row["EmpImage"]);
@@ -138,7 +138,6 @@ namespace WebAdmin
             Session["PROGRAMID"] = "";
             Session["TEAM"] = "";
             Session["TEAMID"] = "";
-            Session["EMPLOYEEID"] = "";
             Session["ISADMIN"] = "";
             Session["ISSHIFTINCHR"] = "";
             Session["DESIGNATION"] = "";

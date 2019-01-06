@@ -1096,9 +1096,7 @@ namespace WebAdmin.UserControls.Leave
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "ConfirmSubmit", sb.ToString());
             ////ClientScript.RegisterStartupScript(this.GetType(), "ConfirmSubmit", sb.ToString());
             #endregion
-        }
-
-       
+        }        
         protected void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateAndSave() == true)
@@ -1126,7 +1124,6 @@ namespace WebAdmin.UserControls.Leave
         {
             Response.Redirect("~/Pages/Default.aspx");
         }
-
         //protected void grSupervisee_SelectedIndexChanged(object sender, EventArgs e)
         //{
         //    GridViewRow row = grSupervisee.SelectedRow;
