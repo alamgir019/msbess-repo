@@ -518,6 +518,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </Content>
+    <Content Include="CrystalReports\TravelReportViewer.aspx" />
     <Content Include="CrystalReports\PayrollReportViewer.aspx" />
     <Content Include="Pages\AwayFromDesk.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
@@ -706,6 +707,13 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="CrystalReports\TravelReportViewer.aspx.cs">
+      <DependentUpon>TravelReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\TravelReportViewer.aspx.designer.cs">
+      <DependentUpon>TravelReportViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="CrystalReports\PayrollReportViewer.aspx.cs">
       <DependentUpon>PayrollReportViewer.aspx</DependentUpon>

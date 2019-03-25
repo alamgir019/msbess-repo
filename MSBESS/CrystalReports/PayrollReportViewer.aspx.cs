@@ -20,8 +20,7 @@ namespace WebAdmin.CrystalReports
         DataTable MyDataTable = new DataTable();
         ReportManager rptManager = new ReportManager();
         CashInWord InWord = new CashInWord();
-
-
+        
         protected void Page_Init(object sender, EventArgs e)
         {
             ConfigureCrystalReports();

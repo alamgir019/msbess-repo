@@ -11,7 +11,6 @@
                         <div class="form-horizontal">
                             <div class="box-body">
                                 <div class="box-body table-responsive no-padding">
-
                                     <asp:GridView
                                         ID="grTravelList" runat="server" AutoGenerateColumns="False" Width="100%"
                                         DataKeyNames="TravelId,TravelModeTitle,TravelModeID,AppDate,DepartureDate,ReturnDate,TotalDays,InsertedBy,Purpose,TravelInstruction,EmpId,Fullname,SupervisorId,TravelStatus,AppStatusTitle"
@@ -44,6 +43,7 @@
                                             </asp:ButtonField>--%>
                                         </Columns>
                                     </asp:GridView>
+                                    <asp:HiddenField runat="server" ID="hfLDates" />
                                 </div>
                             </div>
                         </div>

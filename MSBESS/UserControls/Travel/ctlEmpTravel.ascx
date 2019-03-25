@@ -137,7 +137,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <asp:TextBox ID="dtpTravelStart" runat="server" class="form-control datepicker" ClientIDMode="Static"></asp:TextBox>
+                                                <asp:TextBox autocomplete="off" ID="dtpTravelStart" runat="server" class="form-control datepicker" ClientIDMode="Static"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
@@ -158,7 +158,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <asp:TextBox ID="dtpTravelEnd" runat="server" class="form-control datepicker" ClientIDMode="Static"></asp:TextBox>
+                                                <asp:TextBox autocomplete="off" ID="dtpTravelEnd" runat="server" class="form-control datepicker" ClientIDMode="Static"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
@@ -179,7 +179,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <asp:TextBox ID="dtpResumeDate" runat="server" class="form-control datepicker" ClientIDMode="Static"></asp:TextBox>
+                                                <asp:TextBox autocomplete="off" ID="dtpResumeDate" runat="server" class="form-control datepicker" ClientIDMode="Static"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-sm-2">

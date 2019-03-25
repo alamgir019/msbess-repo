@@ -33,7 +33,13 @@
                                             </asp:BoundField>
                                             <asp:BoundField DataField="AppStatusTitle" HeaderText="Application Status">
                                                 <ItemStyle Width="15%"></ItemStyle>
-                                            </asp:BoundField>
+                                            </asp:BoundField>                                            
+                                           <%-- <asp:TemplateField HeaderText="Action">
+                                                <ItemTemplate>
+                                                    <a href="../CrystalReports/ReportViewer.aspx?rep=TrStatus"><i class="fa fa-list-alt text-primary text-center"></i>View</a>
+                                                </ItemTemplate>
+                                                <ItemStyle CssClass="ItemStylecss" Width="20%" />
+                                            </asp:TemplateField>--%>
                                             <asp:ButtonField CommandName="ViewClick" HeaderText="View" ControlStyle-CssClass="fa fa-list-alt text-primary text-center" HeaderStyle-CssClass="text-center">
                                                 <ItemStyle CssClass="ItemStylecss text-center"></ItemStyle>
                                             </asp:ButtonField>                

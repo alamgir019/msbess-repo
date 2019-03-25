@@ -242,6 +242,22 @@
                                 <%--<li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i>Leave Calendar</a></li>--%>
                             </ul>
                         </li>
+                        
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                                <span>Travel</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Pages/EmpTravel.aspx"><i class="fa fa-circle-o"></i>Travel Application</a></li>
+                                <li><a href="../Pages/TravelStatusList.aspx"><i class="fa fa-circle-o"></i>My Travel Status</a></li>
+                                <li><a href="../Pages/TravelRecommendation.aspx"><i class="fa fa-circle-o"></i>Travel Recommendation</a></li>
+                                <li><a href="../Pages/TravelToApprove.aspx"><i class="fa fa-circle-o"></i>Approve Travel</a></li>
+                            </ul>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>

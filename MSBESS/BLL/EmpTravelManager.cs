@@ -136,17 +136,25 @@ public class EmpTravelManager
         p_EmpId.Direction = ParameterDirection.Input;
         p_EmpId.Value = EmpId;
 
-        SqlParameter p_AppStatus = command.Parameters.Add("AppStatus", SqlDbType.Char);
+        SqlParameter p_AppStatus = command.Parameters.AddWithValue("AppStatus", SqlDbType.Char);
         p_AppStatus.Direction = ParameterDirection.Input;
         p_AppStatus.Value = AppStatus;
 
-        SqlParameter p_TravelStart = command.Parameters.Add("TravelStart", SqlDbType.DateTime);
+        SqlParameter p_TravelStart = command.Parameters.AddWithValue("TravelStart", DBNull.Value);
         p_TravelStart.Direction = ParameterDirection.Input;
-        p_TravelStart.Value = TravelStart;
+        p_TravelStart.IsNullable = true;
+        if (!string.IsNullOrEmpty(TravelStart))
+        {
+            p_TravelStart.Value = TravelStart;
+        }
 
-        SqlParameter p_TravelEnd = command.Parameters.Add("TravelEnd", SqlDbType.DateTime);
+        SqlParameter p_TravelEnd = command.Parameters.AddWithValue("TravelEnd", DBNull.Value);
         p_TravelEnd.Direction = ParameterDirection.Input;
-        p_TravelEnd.Value = TravelEnd;
+        p_TravelEnd.IsNullable = true;
+        if (!string.IsNullOrEmpty(TravelEnd))
+        {
+            p_TravelEnd.Value = TravelEnd;
+        }
 
         SqlParameter p_reportingTo = command.Parameters.Add("SupervisorId", SqlDbType.VarChar);
         p_reportingTo.Direction = ParameterDirection.Input;
@@ -156,38 +164,55 @@ public class EmpTravelManager
         return objDAL.ds.Tables["TravelApp"];
     }
 
-    public void UpdateEmpTravel(string strTravelId, string strEmpId, string strTravelStatus,string ApproveBy, string UpdatedBy, string UpdatedDate)
+    public void UpdateEmpTravel(string strTravelId, string strEmpId, string strTravelStatus,string ApproveBy, string UpdatedBy, string UpdatedDate,string tvDates)
     {
-        SqlCommand cmd = new SqlCommand("proc_Update_Travel");
-        cmd.CommandType = CommandType.StoredProcedure;
+        SqlCommand[] cmd;
+        if (strTravelStatus == "A")
+        {
+            int i = 0;
+            char[] splitter = { ',' };
 
-        SqlParameter p_TravelId = cmd.Parameters.Add("TravelID", SqlDbType.BigInt);
+            string[] arinfo2 = new string[10];
+            arinfo2 = Common.str_split(tvDates, splitter);
+
+            cmd = new SqlCommand[1+ arinfo2.Length];
+            for (int j = 1; j <= arinfo2.Length; j++)
+            {
+                cmd[j] = UpdateAttendanceForTravel(strEmpId, arinfo2[j-1], "TV", "", "", UpdatedBy, UpdatedDate);                
+            }
+        }
+        else
+            cmd = new SqlCommand[1];
+        
+        cmd[0] = new SqlCommand("proc_Update_Travel");
+        cmd[0].CommandType = CommandType.StoredProcedure;
+        SqlParameter p_TravelId = cmd[0].Parameters.Add("TravelID", SqlDbType.BigInt);
         p_TravelId.Direction = ParameterDirection.Input;
         p_TravelId.Value = strTravelId;
 
-        SqlParameter p_EmpId = cmd.Parameters.Add("EmpId", SqlDbType.Char);
+        SqlParameter p_EmpId = cmd[0].Parameters.Add("EmpId", SqlDbType.Char);
         p_EmpId.Direction = ParameterDirection.Input;
         p_EmpId.Value = strEmpId;
 
-        SqlParameter p_TravelStatus = cmd.Parameters.Add("AppStatus", SqlDbType.Char);
+        SqlParameter p_TravelStatus = cmd[0].Parameters.Add("AppStatus", SqlDbType.Char);
         p_TravelStatus.Direction = ParameterDirection.Input;
         p_TravelStatus.Value = strTravelStatus;
 
-        SqlParameter p_ApprovedBy = cmd.Parameters.Add("ApprovedBy", SqlDbType.VarChar);
+        SqlParameter p_ApprovedBy = cmd[0].Parameters.Add("ApprovedBy", SqlDbType.VarChar);
         p_ApprovedBy.Direction = ParameterDirection.Input;
         p_ApprovedBy.Value = ApproveBy;
 
-        SqlParameter p_InsertedBy = cmd.Parameters.Add("InsertedBy", SqlDbType.VarChar);
+        SqlParameter p_InsertedBy = cmd[0].Parameters.Add("InsertedBy", SqlDbType.VarChar);
         p_InsertedBy.Direction = ParameterDirection.Input;
         p_InsertedBy.Value = UpdatedBy;
 
-        SqlParameter p_InsertedDate = cmd.Parameters.Add("InsertedDate", SqlDbType.DateTime);
+        SqlParameter p_InsertedDate = cmd[0].Parameters.Add("InsertedDate", SqlDbType.DateTime);
         p_InsertedDate.Direction = ParameterDirection.Input;
         p_InsertedDate.Value = UpdatedDate;
 
         try
         {
-            objDAL.ExecuteQuery(cmd);
+            objDAL.MakeTransaction(cmd);
         }
         catch (Exception ex)
         {
@@ -197,6 +222,11 @@ public class EmpTravelManager
         {
             cmd = null;
         }
+    }
+
+    internal DataTable GetTravelDates(string strLvAppId)
+    {
+        throw new NotImplementedException();
     }
 
     //public void UpdateTravelAppMstForApprove(string strTravelId, string strEmpId, string IsUpdate, string IsDelete, string TravelStatus,
@@ -265,38 +295,52 @@ public class EmpTravelManager
     //    }
     //}
 
-    //public SqlCommand UpdateAttendanceForTravel(string strEmpId, string strAttndDate, string TravelStatus,
-    //    string LTReason, string strInsBy, string strInsDate)
-    //{
-    //    SqlCommand cmd = new SqlCommand("proc_In_Or_Up_Attandance_TravelStatus");
-    //    cmd.CommandType = CommandType.StoredProcedure;
+    public SqlCommand UpdateAttendanceForTravel(string strEmpId, string strAttndDate, string strLeaveAbbrName,
+               string LTReason, string strDuration, string strInsBy, string strInsDate)
+    {
+        SqlCommand cmd = new SqlCommand("proc_Update_Attandance_LeaveStatus");
+        cmd.CommandType = CommandType.StoredProcedure;
 
-    //    SqlParameter p_EmpID = cmd.Parameters.Add("EmpId", SqlDbType.Char);
-    //    p_EmpID.Direction = ParameterDirection.Input;
-    //    p_EmpID.Value = strEmpId;
+        SqlParameter p_EmpID = cmd.Parameters.Add("EmpId", SqlDbType.Char);
+        p_EmpID.Direction = ParameterDirection.Input;
+        p_EmpID.Value = strEmpId;
 
-    //    SqlParameter p_AttndDate = cmd.Parameters.Add("AttndDate", SqlDbType.DateTime);
-    //    p_AttndDate.Direction = ParameterDirection.Input;
-    //    p_AttndDate.Value = strAttndDate;
+        SqlParameter p_AttndDate = cmd.Parameters.Add("AttndDate", SqlDbType.DateTime);
+        p_AttndDate.Direction = ParameterDirection.Input;
+        p_AttndDate.Value = strAttndDate;
 
-    //    SqlParameter p_Status = cmd.Parameters.Add("Status", SqlDbType.Char);
-    //    p_Status.Direction = ParameterDirection.Input;
-    //    p_Status.Value = "TV";
+        SqlParameter p_Status = cmd.Parameters.Add("Status", SqlDbType.Char);
+        p_Status.Direction = ParameterDirection.Input;
+        if (strLeaveAbbrName != "SL")
+            p_Status.Value = "V";
+        else
+            p_Status.Value = strLeaveAbbrName;
 
-    //    SqlParameter p_Remarks = cmd.Parameters.Add("Remarks", SqlDbType.VarChar);
-    //    p_Remarks.Direction = ParameterDirection.Input;
-    //    p_Remarks.Value = LTReason;
+        SqlParameter p_LeaveFlag = cmd.Parameters.Add("LeaveFlag", SqlDbType.Char);
+        p_LeaveFlag.Direction = ParameterDirection.Input;
+        p_LeaveFlag.Value = strLeaveAbbrName;
 
-    //    SqlParameter p_InsertedBy2 = cmd.Parameters.Add("InsertedBy", SqlDbType.VarChar);
-    //    p_InsertedBy2.Direction = ParameterDirection.Input;
-    //    p_InsertedBy2.Value = strInsBy;
+        SqlParameter p_Remarks = cmd.Parameters.Add("Remarks", SqlDbType.VarChar);
+        p_Remarks.Direction = ParameterDirection.Input;
+        p_Remarks.Value = LTReason;
 
-    //    SqlParameter p_InsertedDate5 = cmd.Parameters.Add("InsertedDate", SqlDbType.DateTime);
-    //    p_InsertedDate5.Direction = ParameterDirection.Input;
-    //    p_InsertedDate5.Value = Convert.ToDateTime(strInsDate);
+        SqlParameter p_LateTimeAmt = cmd.Parameters.Add("LateTimeAmt", SqlDbType.BigInt);
+        p_LateTimeAmt.Direction = ParameterDirection.Input;
+        if (strDuration == "1")
+            p_LateTimeAmt.Value = 8;
+        else
+            p_LateTimeAmt.Value = 4;
 
-    //    return cmd;
-    //}
+        SqlParameter p_InsertedBy2 = cmd.Parameters.Add("InsertedBy", SqlDbType.VarChar);
+        p_InsertedBy2.Direction = ParameterDirection.Input;
+        p_InsertedBy2.Value = strInsBy;
+
+        SqlParameter p_InsertedDate5 = cmd.Parameters.Add("InsertedDate", SqlDbType.DateTime);
+        p_InsertedDate5.Direction = ParameterDirection.Input;
+        p_InsertedDate5.Value = strInsDate;
+
+        return cmd;
+    }
 
     //public void UpdateTravelAppMstForDeny(string strTravelId, string strEmpId, string IsUpdate, string IsDelete,
     //    string strTravelStatus, string strInsBy, string strInsDate)

@@ -41,16 +41,16 @@ namespace WebAdmin.UserControls.Travel
             strStartDate = strStartDate + "-" + "01" + "-" + "01";
             strEndDate = strEndDate + "-" + "12" + "-" + "31";
             DataTable dtTravelStatus = new DataTable();
-            if (Session["ISADMIN"].ToString() == "N")
-            {
+            //if (Session["ISADMIN"].ToString() == "N")
+            //{
                 //dtTravelStaus = objLeaveMgr.SelectRequestLeaveAppMst(0, "", "P", strStartDate, strEndDate, Session["EMPID"].ToString().Trim());
-                dtTravelStatus = objTravelMgr.GetTravelApp(0, "", "P", strStartDate, strEndDate, Session["EMPID"].ToString().Trim());
-            }
-            else
-            {
+            dtTravelStatus = objTravelMgr.GetTravelApp(0, "", "P", strStartDate, strEndDate, Session["EMPID"].ToString().Trim());
+            //}
+            //else
+            //{
                 //dtTravelStaus = objLeaveMgr.SelectRequestLeaveAppMst(0, "", "P", strStartDate, strEndDate, "");
-                dtTravelStatus = objTravelMgr.GetTravelApp(0, "", "P", strStartDate, strEndDate, "");
-            }
+                //dtTravelStatus = objTravelMgr.GetTravelApp(0, "", "P", strStartDate, strEndDate, "");
+            //}
             //ViewState["TravelStatus"] = dtTravelStatus;
             grRecommendTravelList.DataSource = dtTravelStatus;
             grRecommendTravelList.DataBind();
@@ -73,66 +73,6 @@ namespace WebAdmin.UserControls.Travel
             }
             SlNo = 0;
         }
-        //private void AvailableLeave(string gridStatus, string strEmpID, string strLTypeID, Int32 intSelectedRowIndex)
-        //{
-        //    DataTable dtLeaveProfile = new DataTable();
-        //    if (gridStatus == "A")
-        //    {
-        //        dtLeaveProfile = objLeaveMgr.SelectEmpLeaveProfile(strEmpID, strLTypeID);
-        //        if (dtLeaveProfile.Rows.Count > 0)
-        //        {
-        //            if (string.IsNullOrEmpty(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) == false)
-        //                hfLEnjoyed.Value = Convert.ToString(Convert.ToDecimal(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) + Convert.ToDecimal(grRecommendTravelList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim()));
-        //            else
-        //                hfLEnjoyed.Value = grRecommendTravelList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim();
-        //        }
-        //    }
-        //    else if (gridStatus == "D")
-        //    {
-        //        dtLeaveProfile = objLeaveMgr.SelectEmpLeaveProfile(strEmpID, strLTypeID);
-        //        if (dtLeaveProfile.Rows.Count > 0)
-        //        {
-        //            if (string.IsNullOrEmpty(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) == false)
-        //                hfLEnjoyed.Value = Convert.ToString(Convert.ToDecimal(dtLeaveProfile.Rows[0]["LeaveEnjoyed"].ToString()) + Convert.ToDecimal(grRecommendTravelList.DataKeys[intSelectedRowIndex].Values[7].ToString().Trim()));
-        //            else
-        //                hfLEnjoyed.Value = "0";
-        //        }
-        //    }
-        //}
-        //protected void GetLeaveDates(string strLvAppId, string gridStatus, string strDateFrom, string strDateTo)
-        //{
-        //    string strFromDate = "";
-        //    string strToDate = "";
-        //    if (gridStatus == "A")
-        //    {
-        //        strFromDate = strDateFrom;
-        //        strToDate = strDateTo;
-        //    }
-        //    else if (gridStatus == "D")
-        //    {
-        //        strFromDate = strDateFrom;
-        //        strToDate = strDateTo;
-        //    }
-        //    else if (gridStatus == "AC")
-        //    {
-        //        strFromDate = strDateFrom;
-        //        strToDate = strDateTo;
-        //    }
-
-        //    DataTable dtLeaveDates = new DataTable();
-        //    dtLeaveDates = objLeaveMgr.GetLeaveDates(strLvAppId);
-        //    if (dtLeaveDates.Rows.Count > 0)
-        //    {
-        //        hfLDates.Value = "";
-        //        foreach (DataRow dRow in dtLeaveDates.Rows)
-        //        {
-        //            if (hfLDates.Value != "")
-        //                hfLDates.Value = hfLDates.Value + "," + Common.ReturnDateTimeInString(Common.DisplayDateTime(dRow["LevDate"].ToString(), false, Constant.strDateFormat), false, Constant.strDateFormat);
-        //            else
-        //                hfLDates.Value = Common.ReturnDateTimeInString(Common.DisplayDateTime(dRow["LevDate"].ToString(), false, Constant.strDateFormat), false, Constant.strDateFormat);
-        //        }
-        //    }
-        //}
         protected void grRecommendTravelList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridView _gridView = (GridView)sender;
@@ -144,15 +84,6 @@ namespace WebAdmin.UserControls.Travel
             switch (_commandName)
             {
                 case ("ViewClick"):
-                    //StringBuilder sb = new StringBuilder();
-                    //string strURL = "LeaveApplicationView.aspx?params=" + grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[11].ToString() + "," + grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[0].ToString().Trim() + ", R" + ", M"; ;
-                    //sb.Append("<script>");
-
-                    //sb.Append("window.open('" + strURL + "', '', '');");
-                    //sb.Append("</script>");
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit",
-                    //                         sb.ToString(), false);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "ConfirmSubmit", sb.ToString());
                     GenerateReport(grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[0].ToString().Trim(), grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[10].ToString().Trim(), grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[13].ToString().Trim());
                     break;
 
@@ -161,9 +92,6 @@ namespace WebAdmin.UserControls.Travel
                     SiteMaster.ShowClientMessage(Page, "Travel has been Recommended Successfully.", "success");
                     break;
                 case ("CancelClick"):
-                    //objLeaveMgr.CancelLeaveApp(grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[0].ToString(),
-                    //    grRecommendTravelList.DataKeys[_gridView.SelectedIndex].Values[11].ToString().Trim(), "Y", "N", "C",
-                    //    Session["USERID"].ToString(), Common.ReturnDateTimeInString(Common.DisplayDateTime(DateTime.Now.ToString(), false, Constant.strDateFormat), false, Constant.strDateFormat));
 
                     SiteMaster.ShowClientMessage(Page, "Leave has been Cancelled Successfully.", "success");
                     break;
@@ -184,7 +112,7 @@ namespace WebAdmin.UserControls.Travel
             //dtTravelStatus = (DataTable)ViewState["TravelStatus"];
             objTravelMgr.UpdateEmpTravel(travelId,
                 empId, status, hdfApproveBy.Value.Trim(), Session["EMPID"].ToString(),
-                 Common.ReturnDateTimeInString(Common.DisplayDateTime(DateTime.Now.ToString(), false, Constant.strDateFormat), false, Constant.strDateFormat));
+                 Common.ReturnDateTimeInString(Common.DisplayDateTime(DateTime.Now.ToString(), false, Constant.strDateFormat), false, Constant.strDateFormat),"");
             this.SendMail();
 
         }
@@ -202,7 +130,7 @@ namespace WebAdmin.UserControls.Travel
 
             mailManager.strSubject = "Request to Approve Travel";
 
-            mailManager.strBody = "Please verify the following Application: "
+            mailManager.strBody = "Please verify the Application. "
                           + " \n "
                            + " \n\n "
                            + "With thanks "
@@ -214,12 +142,14 @@ namespace WebAdmin.UserControls.Travel
             if (empUserFrom.Rows.Count > 0)
             {
                 mailManager.strFromAddr = empUserFrom.Rows[0]["OfficeEmail"].ToString();
+                //mailManager.strFromAddr = "alamgir@baseltd.com";
                 mailManager.strBody += empUserFrom.Rows[0]["FullName"].ToString() + " \n ";
             }
             empUserTo = empManager.SelectEmpInfo(hdfApproveBy.Value.Trim());
             if (empUserTo.Rows.Count > 0)
             {
                 mailManager.strToAddr = empUserTo.Rows[0]["OfficeEmail"].ToString();
+                //mailManager.strToAddr = "rumi@baseltd.com";
             }
             string strVPath = "http://10.0.1.70:82/LogIn";
             mailManager.strBody += " \n ======================================\n"
@@ -228,41 +158,17 @@ namespace WebAdmin.UserControls.Travel
         }
         private void GenerateReport(string travelId, string empId, string appStatus)
         {
-            string ReportPath = "";
-            CrystalDecisions.CrystalReports.Engine.ReportDocument ReportDoc = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
             StringBuilder sb = new StringBuilder();
-            string fileName = Session["USERID"].ToString() + "_" + "TravelApp" + ".pdf";
-            ReportPath = Server.MapPath("~/CrystalReports/rptTravelApplication.rpt");
-            ReportDoc.Load(ReportPath);
+            Session["REPORTID"] = "TrStatus";
+            Session["travelId"] = travelId;
+            Session["appStatus"] = appStatus;
+            Session["applicantId"] = empId;
 
-            DataTable travelData = objTravelMgr.SelectEmpTravelRpt(travelId, empId, appStatus);
-
-            ReportDoc.SetDataSource(travelData);
-            this.ExPortReport(ReportDoc, fileName);
-            this.OpenWindow(fileName, sb);
-        }
-        private void OpenWindow(string fileName, StringBuilder sb)
-        {
             sb.Append("<script>");
-            sb.Append("window.open('/CrystalReports/VirtualReport/" + fileName + "', '', 'fullscreen=true,scrollbars=yes,resizable=yes');");
+            sb.Append("window.open('/CrystalReports/TravelReportViewer.aspx', '', 'fullscreen=true,scrollbars=yes,resizable=yes');");//
             sb.Append("</script>");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit",
-                                     sb.ToString(), false);
-        }
-        private void ExPortReport(CrystalDecisions.CrystalReports.Engine.ReportDocument ReportDoc, string rptPath)
-        {
-            CrystalDecisions.Shared.ExportOptions CrExportOptions;
-            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-            PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-            CrDiskFileDestinationOptions.DiskFileName = Server.MapPath("~/CrystalReports/VirtualReport/" + rptPath);
-            CrExportOptions = ReportDoc.ExportOptions;
-            {
-                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-                CrExportOptions.FormatOptions = CrFormatTypeOptions;
-            }
-            ReportDoc.Export();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit", sb.ToString(), false);
+            
         }
 
         protected void txtApproveBy_TextChanged(object sender, EventArgs e)

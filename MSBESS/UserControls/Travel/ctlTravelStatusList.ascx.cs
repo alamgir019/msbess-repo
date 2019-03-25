@@ -37,16 +37,16 @@ namespace WebAdmin.UserControls.Travel
             strEndDate = strEndDate + "-" + "12" + "-" + "31";
             DataTable dtLeaveDeny = new DataTable();
             DataTable dtTravel = new DataTable();
-            if (Session["ISADMIN"].ToString() == "N")
-            {
-                //dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, Session["EMPID"].ToString().Trim(), "PRDCA", strStartDate, strEndDate, "");
-                dtTravel = objTravelMgr.GetTravelApp(0, Session["EMPID"].ToString().Trim(), "PRDCA", strStartDate, strEndDate, "");
-            }
-            else
-            {
-                //dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "N", "PR", strStartDate, strEndDate, "");
-                dtTravel = objTravelMgr.GetTravelApp(0, "N", "PR", strStartDate, strEndDate, "");
-            }
+            //if (Session["ISADMIN"].ToString() == "N")
+            //{
+            //dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, Session["EMPID"].ToString().Trim(), "PRDCA", strStartDate, strEndDate, "");
+            dtTravel = objTravelMgr.GetTravelApp(0, Session["EMPID"].ToString().Trim(), "PRDCA", strStartDate, strEndDate, "");
+            //}
+            //else
+            //{
+            //dtLeaveDeny = objLeaveMgr.SelectRequestLeaveAppMst(0, "N", "PR", strStartDate, strEndDate, "");
+            //dtTravel = objTravelMgr.GetTravelApp(0, "N", "PR", strStartDate, strEndDate, "");
+            //}
 
             grTravelStatusList.DataSource = dtTravel;
             grTravelStatusList.DataBind();
@@ -83,45 +83,54 @@ namespace WebAdmin.UserControls.Travel
                     GenerateReport(grTravelStatusList.DataKeys[_gridView.SelectedIndex].Values[0].ToString().Trim(), grTravelStatusList.DataKeys[_gridView.SelectedIndex].Values[10].ToString().Trim(), grTravelStatusList.DataKeys[_gridView.SelectedIndex].Values[13].ToString().Trim());
                     break;
             }
-            this.OpenRecord();
+           // this.OpenRecord();
         }
         private void GenerateReport(string travelId,string empId,string appStatus)
         {
-            string ReportPath = "";
-            CrystalDecisions.CrystalReports.Engine.ReportDocument ReportDoc = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+            //string ReportPath = "";
+            //CrystalDecisions.CrystalReports.Engine.ReportDocument ReportDoc = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
             StringBuilder sb = new StringBuilder();
-            string fileName = Session["USERID"].ToString() + "_" + "TravelApp" + ".pdf";
-            ReportPath = Server.MapPath("~/CrystalReports/rptTravelApplication.rpt");
-            ReportDoc.Load(ReportPath);
+            //string fileName = Session["USERID"].ToString() + "_" + "TravelApp" + ".pdf";
+            //ReportPath = Server.MapPath("~/CrystalReports/rptTravelApplication.rpt");
+            //ReportDoc.Load(ReportPath);
+            //DataTable travelData = objTravelMgr.SelectEmpTravelRpt(travelId, empId, appStatus);
+            //ReportDoc.SetDataSource(travelData);
+            Session["REPORTID"] = "TrStatus";
+            Session["travelId"] = travelId;
+            Session["appStatus"] = appStatus;
+            //StringBuilder sb = new StringBuilder();
 
-            DataTable travelData = objTravelMgr.SelectEmpTravelRpt(travelId, empId, appStatus);
-
-            ReportDoc.SetDataSource(travelData);
-            this.ExPortReport(ReportDoc, fileName);
-            this.OpenWindow(fileName, sb);
-        }
-        private void OpenWindow(string fileName, StringBuilder sb)
-        {
             sb.Append("<script>");
-            sb.Append("window.open('/CrystalReports/VirtualReport/" + fileName + "', '', 'fullscreen=true,scrollbars=yes,resizable=yes');");
+            sb.Append("window.open('/CrystalReports/TravelReportViewer.aspx', '', 'fullscreen=true,scrollbars=yes,resizable=yes');");//
             sb.Append("</script>");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit",
-                                     sb.ToString(), false);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit", sb.ToString(), false);
+
+
+            //this.ExPortReport(ReportDoc, fileName);
+            //this.OpenWindow(fileName, sb);
         }
-        private void ExPortReport(CrystalDecisions.CrystalReports.Engine.ReportDocument ReportDoc, string rptPath)
-        {
-            CrystalDecisions.Shared.ExportOptions CrExportOptions;
-            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-            PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-            CrDiskFileDestinationOptions.DiskFileName = Server.MapPath("~/CrystalReports/VirtualReport/" + rptPath);
-            CrExportOptions = ReportDoc.ExportOptions;
-            {
-                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-                CrExportOptions.FormatOptions = CrFormatTypeOptions;
-            }
-            ReportDoc.Export();
-        }
+        //private void OpenWindow(string fileName, StringBuilder sb)
+        //{
+        //    sb.Append("<script>");
+        //    sb.Append("window.open('/CrystalReports/VirtualReport/" + fileName + "', '', 'fullscreen=true,scrollbars=yes,resizable=yes');");
+        //    sb.Append("</script>");
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmSubmit",
+        //                             sb.ToString(), false);
+        //}
+        //private void ExPortReport(CrystalDecisions.CrystalReports.Engine.ReportDocument ReportDoc, string rptPath)
+        //{
+        //    CrystalDecisions.Shared.ExportOptions CrExportOptions;
+        //    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+        //    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+        //    CrDiskFileDestinationOptions.DiskFileName = Server.MapPath("~/CrystalReports/VirtualReport/" + rptPath);
+        //    CrExportOptions = ReportDoc.ExportOptions;
+        //    {
+        //        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+        //        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+        //        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+        //        CrExportOptions.FormatOptions = CrFormatTypeOptions;
+        //    }
+        //    ReportDoc.Export();
+        //}
     }
 }

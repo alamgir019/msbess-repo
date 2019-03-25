@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebAdmin.UserControls.Travel {
+namespace WebAdmin.CrystalReports {
     
     
-    public partial class ctlTravelToApprove {
+    public partial class TravelReportViewer {
         
         /// <summary>
-        /// grTravelList control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grTravelList;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// hfLDates control.
+        /// CRVT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfLDates;
+        protected global::CrystalDecisions.Web.CrystalReportViewer CRVT;
     }
 }
